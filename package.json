@@ -10,13 +10,18 @@
     "test": "jest --watchAll=false"
   },
   "dependencies": {
+    "@expo/metro-runtime": "^55.0.9",
     "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~54.0.33",
     "expo-image": "~3.0.11",
     "expo-router": "~6.0.23",
     "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "^19.2.4",
     "react-native": "0.81.5",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-screens": "^4.24.0",
+    "react-native-web": "^0.21.2",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
@@ -24,7 +29,7 @@
     "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.5.2",
-    "@types/react": "~19.1.0",
+    "@types/react": "~19.2.0",
     "jest": "^29.7.0",
     "jest-expo": "^55.0.13",
     "ts-node": "^10.9.2",
