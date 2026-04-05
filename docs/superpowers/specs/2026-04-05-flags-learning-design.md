@@ -116,7 +116,7 @@ interface QuizQuestion {
 - FlatList of CountryCard components (2-column grid)
 - Each card: flag image + country name + capital
 - Tap card → Country Detail screen
-- Viewing a card automatically calls `markLearned(code)`
+- Navigating to Country Detail calls `markLearned(code)` (scroll-past does not count)
 
 ### Country Detail Screen (`country/[code].tsx`)
 - Full-width flag image at top
@@ -127,10 +127,11 @@ interface QuizQuestion {
   - `flag-to-name`: show flag image, pick country name (4 options)
   - `name-to-flag`: show country name, pick correct flag (4 flag images)
   - `capital`: show flag + country name, pick correct capital (4 options)
-  - `population`: show flag + country name, pick correct population range (4 options)
+  - `population`: show flag + country name, pick correct population from 4 real country populations
 - Progress bar at top showing current question (e.g. 3/10)
 - After each answer: highlight correct (green) / wrong (red), then Next button
-- Result screen (inline): score display, comparison to high score, "Play again" button
+- Score = number of correct answers out of 10
+- Result screen (inline): score display (e.g. "7/10"), comparison to high score, "Play again" button
 
 ### Progress Screen (`progress.tsx`)
 - Countries learned: progress bar + count (e.g. "47 / 195")
