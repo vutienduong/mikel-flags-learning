@@ -33,7 +33,6 @@ export default function CountryDetailScreen() {
           source={{ uri: country.flagUrl }}
           style={styles.flag}
           contentFit="cover"
-          placeholder={{ color: "#E5E7EB" }}
         />
         <View style={styles.content}>
           <Text style={styles.name}>{country.name}</Text>

@@ -14,7 +14,6 @@ export function CountryCard({ country, onPress }: Props) {
         source={{ uri: country.flagUrl }}
         style={styles.flag}
         contentFit="cover"
-        placeholder={{ color: "#E5E7EB" }}
       />
       <View style={styles.info}>
         <Text style={styles.name} numberOfLines={1}>

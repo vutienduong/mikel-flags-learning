@@ -173,7 +173,6 @@ function QuestionPrompt({ question }: { question: QuizQuestion }) {
           source={{ uri: correct.flagUrl }}
           style={styles.promptFlag}
           contentFit="cover"
-          placeholder={{ color: "#E5E7EB" }}
         />
       )}
       {(type === "name-to-flag" || type === "capital" || type === "population") && (
