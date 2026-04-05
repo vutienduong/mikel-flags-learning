@@ -6,7 +6,7 @@ export default function RootLayout() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
         name="country/[code]"
-        options={{ title: "Country Detail", headerBackTitle: "Back" }}
+        options={{ title: "Country Detail" }}
       />
     </Stack>
   );
