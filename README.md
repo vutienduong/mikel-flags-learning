@@ -1,28 +1,25 @@
 # Mikel Flags Learning
 
-World flags learning project with an Expo mobile app and a Next.js web app.
+A flags learning project for kids and beginners, with the existing Expo app kept at the repository root and the active Next.js web app in `web-app/`.
 
-## What is included
+Current V2 expansion work targets **only** the Next.js app under `web-app/`. The Expo files remain in place for now, but they are not part of the new implementation path.
 
-- Expo app for flag browsing, quizzes, and progress tracking
-- Next.js web app in `web-app/`
-- Shared country data and quiz-generation logic
-- Jest setup for the React Native app
+## Apps
 
-## Run the mobile app
+- Expo mobile app at the repository root.
+- Next.js web app in `web-app/`.
+- Shared country data in JSON, including flag URL, capital, population, area, region, and languages.
 
-```bash
-npm install
-npm start
-```
+## Web V2 MVP
 
-Run tests:
+- Home dashboard with current journey, streak, continue CTA, quick play, and a fun fact.
+- Southeast Asia journey map with completed, current, and locked country nodes.
+- Country intro screens with real flags and short storytelling facts.
+- Spot the Odd Flag mini-game with fast feedback and star rewards.
+- Progress screen with countries learned, streak, XP level, badges, and journey completion.
+- Explore screen for the full 250-country data set.
 
-```bash
-npm test
-```
-
-## Run the web app
+## Run the Web App
 
 ```bash
 cd web-app
@@ -32,9 +29,13 @@ npm run dev
 
 Then visit `http://localhost:3000`.
 
-## Next Steps / Future Work
+Useful web commands:
 
-- Share data-generation scripts between mobile and web more explicitly.
-- Add sync support so progress can move between devices.
-- Expand quiz types with map, region, and currency questions.
-- Add accessibility QA for screen readers and keyboard navigation on web.
+```bash
+npm run build
+npm run start
+```
+
+## Data
+
+Country codes are lowercase and the app keeps the full 250-country data set. Game progress is local-first for the MVP; a backend can be added later for accounts, sync, AI-generated odd flag variants, leaderboards, and content management.
