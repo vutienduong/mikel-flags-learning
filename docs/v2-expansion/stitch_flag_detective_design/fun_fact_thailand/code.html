@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6d797f",
+                    "on-secondary-container": "#6e5400",
+                    "secondary": "#755b00",
+                    "on-tertiary-container": "#820010",
+                    "background": "#faf9f8",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e9e8e7",
+                    "tertiary-container": "#ff857e",
+                    "surface-container-low": "#f4f3f2",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#6ad3ff",
+                    "surface-tint": "#006685",
+                    "secondary-fixed-dim": "#f4bf00",
+                    "tertiary": "#bb1522",
+                    "on-primary-fixed-variant": "#004d65",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf9f8",
+                    "surface-variant": "#e3e2e1",
+                    "secondary-fixed": "#ffdf92",
+                    "on-tertiary-fixed": "#410004",
+                    "on-surface": "#1a1c1b",
+                    "surface-dim": "#dadad9",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fec700",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eeeeec",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface": "#faf9f8",
+                    "on-surface-variant": "#3d484e",
+                    "primary": "#006685",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#594400",
+                    "outline-variant": "#bdc8cf",
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary-fixed-variant": "#930014",
+                    "inverse-primary": "#6ad3ff",
+                    "on-primary-fixed": "#001f2a",
+                    "on-primary-container": "#004459",
+                    "primary-container": "#2bb6e6",
+                    "on-background": "#1a1c1b",
+                    "inverse-on-surface": "#f1f1ef",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "primary-fixed": "#bee9ff",
+                    "on-secondary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "margin-mobile": "24px",
+                    "margin-desktop": "48px",
+                    "base-unit": "8px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Lexend"],
+                    "headline-lg": ["Lexend"],
+                    "body-md": ["Lexend"],
+                    "body-lg": ["Lexend"],
+                    "headline-xl": ["Lexend"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .playful-pattern {
+            background-color: #faf9f8;
+            background-image: radial-gradient(#2bb6e6 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+    </style>
+</head>
+<body class="playful-pattern min-h-screen flex flex-col font-body-md text-on-background">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 flex justify-between items-center px-6 h-20 w-full docked full-width top-0 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(226,232,240,1)] dark:shadow-[0_4px_0_0_rgba(30,41,59,1)] sticky z-50">
+<div class="text-2xl font-black text-sky-600 dark:text-sky-400 tracking-tighter">
+            Junior Navigator
+        </div>
+<div class="flex gap-4">
+<button class="text-slate-400 dark:text-slate-600 hover:scale-105 transition-transform duration-200 active:translate-y-1">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+</button>
+<button class="text-slate-400 dark:text-slate-600 hover:scale-105 transition-transform duration-200 active:translate-y-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-gutter py-12">
+<div class="max-w-2xl w-full flex flex-col items-center text-center space-y-10">
+<!-- Flag Container (Level 2 Interactive Style) -->
+<div class="relative group">
+<div class="bg-white p-4 rounded-[40px] border-b-[8px] border-slate-200 shadow-xl transition-all duration-200 group-hover:scale-105">
+<img alt="Flag of Thailand" class="w-64 h-44 object-cover rounded-[24px] border-4 border-white shadow-inner" data-alt="A high-quality, vibrant photograph of the national flag of Thailand waving gently against a clear blue sky. The stripes of red, white, and blue are crisp and well-defined, captured with soft natural sunlight that highlights the fabric's texture. The overall composition is clean and centered, fitting the playful and adventurous aesthetic of a children's educational world-exploration app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAR3r1KkHu3VRNoIHm_Q45xwBvZq0uV3r0w_vpU4HJvxbrAox98Z-HuZ2q7jVfA89MFFQ5ysva4YZi6Zu0AbIyW3xolj1kglb3SRmjH2P6SUeerV07M7DXzEIOWkO4q2b7RuH4m_-dxK4_BKxSj82hHCA1VsH7IG0wZT_zXR5Tx4zA10gEtC1v4uV7dOZOuPcR2ZGkUyb4TOBVILNqUNFqZ1-L6UpqBn03EznshNArwZAtobtoOb5Vb9eJBSLxBwaHc-J7AZzY6SQ"/>
+</div>
+<!-- Decorative Badge -->
+<div class="absolute -top-6 -right-6 bg-secondary-container text-on-secondary-container p-4 rounded-full border-b-4 border-secondary shadow-lg rotate-12">
+<span class="material-symbols-outlined text-4xl" data-icon="explore">explore</span>
+</div>
+</div>
+<!-- Fact Content Section -->
+<div class="space-y-6">
+<h1 class="font-headline-xl text-headline-xl text-primary drop-shadow-sm">
+                    Did you know?
+                </h1>
+<div class="bg-white p-8 rounded-[32px] border-b-4 border-slate-200 shadow-lg flex flex-col md:flex-row items-center gap-6 max-w-lg mx-auto">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed flex-1">
+                        This country has more temples than any other in the region.
+                    </p>
+<button class="w-16 h-16 flex items-center justify-center bg-primary-container text-white rounded-2xl border-b-[6px] border-primary hover:scale-105 active:translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Primary Action Button (Level 3 Pressed Meta) -->
+<div class="w-full max-w-xs pt-4">
+<button class="group relative w-full h-20">
+<span class="absolute inset-0 bg-on-secondary-container rounded-[24px]"></span>
+<span class="absolute inset-0 bg-secondary-container rounded-[24px] -translate-y-2 border-2 border-on-secondary-container flex items-center justify-center transition-transform group-active:-translate-y-1">
+<span class="font-label-bold text-2xl uppercase tracking-wider text-on-secondary-container">
+                            Continue Journey
+                        </span>
+</span>
+</button>
+</div>
+<!-- Decorative Elements -->
+<div class="grid grid-cols-3 gap-8 opacity-40">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="temple_buddhist">temple_buddhist</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="landscape">landscape</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="local_activity">local_activity</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-[0_-4px_0_0_rgba(226,232,240,1)] dark:shadow-[0_-4px_0_0_rgba(30,41,59,1)]">
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-lexend font-bold text-[12px]">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-2xl px-4 py-2 border-b-4 border-sky-400 dark:border-sky-600 hover:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-lexend font-bold text-[12px]">Quests</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-lexend font-bold text-[12px]">Awards</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="backpack">backpack</span>
+<span class="font-lexend font-bold text-[12px]">Backpack</span>
+</div>
+</nav>
+<!-- Spacer for bottom nav -->
+<div class="h-28"></div>
+</body></html>

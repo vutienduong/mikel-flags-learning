@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Odd Flag Quest - Vietnam Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dadad9",
+                      "on-secondary-container": "#6e5400",
+                      "surface": "#faf9f8",
+                      "secondary-container": "#fec700",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#3d484e",
+                      "surface-container": "#eeeeec",
+                      "on-tertiary-container": "#820010",
+                      "on-surface": "#1a1c1b",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffdf92",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#410004",
+                      "inverse-primary": "#6ad3ff",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-primary-fixed": "#001f2a",
+                      "surface-variant": "#e3e2e1",
+                      "primary": "#006685",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdad7",
+                      "on-background": "#1a1c1b",
+                      "secondary": "#755b00",
+                      "primary-container": "#2bb6e6",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#bdc8cf",
+                      "tertiary": "#bb1522",
+                      "surface-container-high": "#e9e8e7",
+                      "surface-bright": "#faf9f8",
+                      "on-tertiary-fixed-variant": "#930014",
+                      "on-primary-container": "#004459",
+                      "secondary-fixed-dim": "#f4bf00",
+                      "surface-tint": "#006685",
+                      "background": "#faf9f8",
+                      "on-primary-fixed-variant": "#004d65",
+                      "outline": "#6d797f",
+                      "primary-fixed": "#bee9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f4f3f2",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#594400",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container-highest": "#e3e2e1",
+                      "inverse-surface": "#2f3130",
+                      "primary-fixed-dim": "#6ad3ff",
+                      "tertiary-fixed-dim": "#ffb3ae",
+                      "tertiary-container": "#ff857e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "touch-target-min": "56px",
+                      "margin-mobile": "24px",
+                      "base-unit": "8px",
+                      "margin-desktop": "48px"
+              },
+              "fontFamily": {
+                      "body-md": ["Lexend"],
+                      "body-lg": ["Lexend"],
+                      "headline-xl": ["Lexend"],
+                      "label-bold": ["Lexend"],
+                      "headline-lg": ["Lexend"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .flag-grid-container {
+            perspective: 1000px;
+        }
+        .flag-card {
+            box-shadow: 0 6px 0 0 rgba(0,0,0,0.1);
+        }
+        .flag-card:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 0 rgba(0,0,0,0.1);
+        }
+        .correct-card {
+            border-color: #4ade80 !important;
+            box-shadow: 0 6px 0 0 #166534 !important;
+        }
+        .wrong-card {
+            border-color: #f87171 !important;
+            box-shadow: 0 6px 0 0 #991b1b !important;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 docked full-width top-0 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] sticky z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full border-2 border-slate-200">
+<span class="material-symbols-outlined text-primary-container" data-icon="timer">timer</span>
+<span class="font-lexend font-bold text-lg text-primary-container">10s</span>
+</div>
+</div>
+<h1 class="text-2xl font-black text-[#2BB6E6] dark:text-white tracking-tight font-headline-lg">Odd Flag Quest</h1>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="stars">stars</span>
+<span class="text-[#2BB6E6] dark:text-white font-black underline decoration-4 underline-offset-4 text-lg">Score: 0</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Game Content -->
+<main class="flex-grow flex items-center justify-center p-gutter">
+<div class="w-full max-w-2xl bg-white rounded-[32px] p-8 border-b-[8px] border-slate-200 shadow-xl">
+<div class="text-center mb-8">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">Find the Odd Flag! 🇻🇳</h2>
+<p class="text-body-lg font-body-lg text-outline">Look closely at the stars...</p>
+</div>
+<!-- Game Grid -->
+<div class="grid grid-cols-3 gap-6 flag-grid-container">
+<!-- Row 1 -->
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<!-- Row 2 -->
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<!-- THE ODD ONE (Rotated star) -->
+<button class="flag-card correct-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-[6px] flex items-center justify-center overflow-hidden transition-all active:translate-y-1 scale-105 z-10">
+<span class="material-symbols-outlined text-secondary-container text-6xl rotate-12" data-icon="star" data-weight="fill">star</span>
+<div class="absolute inset-0 bg-green-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl absolute -top-2 -right-2 bg-green-500 rounded-full p-1" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+</button>
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<!-- Row 3 -->
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+<!-- WRONG ATTEMPT VISUAL -->
+<button class="flag-card wrong-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-[6px] flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+<div class="absolute inset-0 bg-red-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-6xl" data-icon="close">close</span>
+</div>
+</button>
+<button class="flag-card relative aspect-[3/2] bg-tertiary rounded-[16px] border-4 border-white flex items-center justify-center overflow-hidden transition-all active:translate-y-1">
+<span class="material-symbols-outlined text-secondary-container text-6xl" data-icon="star" data-weight="fill">star</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer Progress Tracker -->
+<footer class="bg-slate-100 dark:bg-slate-950 docked full-width bottom-0 border-t-4 border-slate-200 dark:border-slate-800 p-6">
+<div class="max-w-4xl mx-auto w-full">
+<div class="flex items-center justify-between mb-3">
+<span class="font-lexend text-sm font-black uppercase tracking-wider text-slate-600">Level Progress</span>
+<span class="font-lexend text-sm font-black text-primary-container">70%</span>
+</div>
+<div class="h-8 w-full bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 relative shadow-inner">
+<!-- Depleting Timer Bar -->
+<div class="h-full bg-secondary-container rounded-full transition-all duration-1000 shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.2)]" style="width: 60%"></div>
+<!-- Shimmer Overlay -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 -skew-x-12 translate-x-1/2"></div>
+</div>
+<div class="flex justify-between mt-4">
+<div class="flex gap-4">
+<button class="font-lexend text-sm font-medium uppercase tracking-wider text-slate-500 hover:text-[#2BB6E6] transition-colors active:scale-95">How to Play</button>
+<button class="font-lexend text-sm font-medium uppercase tracking-wider text-slate-500 hover:text-[#2BB6E6] transition-colors active:scale-95">Settings</button>
+</div>
+<button class="font-lexend text-sm font-medium uppercase tracking-wider text-slate-500 hover:text-[#2BB6E6] transition-colors active:scale-95 font-bold">Exit Game</button>
+</div>
+</div>
+</footer>
+<!-- Overlay Success Feedback -->
+<div class="fixed inset-0 pointer-events-none z-[100] flex items-center justify-center">
+<div class="bg-white/95 border-[12px] border-secondary-container p-12 rounded-[48px] shadow-2xl scale-110 opacity-0 transform transition-all pointer-events-none">
+<div class="flex flex-col items-center gap-4">
+<span class="material-symbols-outlined text-9xl text-secondary-container" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+<h3 class="text-headline-xl font-headline-xl text-primary-container">GREAT JOB!</h3>
+<p class="text-headline-lg font-headline-lg text-on-surface">+100 POINTS</p>
+</div>
+</div>
+</div>
+<!-- Decorative Illustration (Background) -->
+<div class="fixed bottom-20 left-10 opacity-20 -z-10">
+<img class="w-48 h-48 rotate-12" data-alt="A friendly, cartoon-style compass character with a smiling face and big expressive eyes, set in a bright and playful adventure-themed environment. The color palette uses vibrant sky blues and sun yellows consistent with a high-contrast educational app for children. The mood is encouraging and joyful, featuring soft rounded edges and bold outlines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQs9GNy_PKNMmjFwjql3tmH-NwokK1_qiNSVIUCbyeX_Yfw_sz599Ozi9bOi-BcgTqQRNRH_6lNW2DgtcFy0OlFCOGEdRUvy88bbQfvNLa7lKuyxy5NlLo_vgMFxNN-E66Y78H7_id9qPKdaEujrFxGmFZul6_a1LwWCJOcMu4mEtn5Z0PJf-_TH6fcodqL3QNQhC1ugg0GeacWREXMvsx3NWLuuxUdgYQG7OEd8vz0ztEnYGFxBgW7WPN0CWzlTVz0l8fewPCBsA"/>
+</div>
+</body></html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#6ad3ff",
+                    "surface-variant": "#e3e2e1",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#594400",
+                    "primary-container": "#2bb6e6",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container": "#eeeeec",
+                    "outline-variant": "#bdc8cf",
+                    "on-primary-fixed": "#001f2a",
+                    "outline": "#6d797f",
+                    "secondary-fixed-dim": "#f4bf00",
+                    "secondary-fixed": "#ffdf92",
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary-container": "#820010",
+                    "primary": "#006685",
+                    "surface-container-low": "#f4f3f2",
+                    "primary-fixed-dim": "#6ad3ff",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1a1c1b",
+                    "surface-tint": "#006685",
+                    "secondary": "#755b00",
+                    "tertiary-container": "#ff857e",
+                    "on-primary-fixed-variant": "#004d65",
+                    "tertiary": "#bb1522",
+                    "inverse-on-surface": "#f1f1ef",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-surface": "#1a1c1b",
+                    "on-secondary-container": "#6e5400",
+                    "on-tertiary-fixed": "#410004",
+                    "on-primary-container": "#004459",
+                    "surface-bright": "#faf9f8",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "background": "#faf9f8",
+                    "surface-dim": "#dadad9",
+                    "surface-container-high": "#e9e8e7",
+                    "secondary-container": "#fec700",
+                    "on-surface-variant": "#3d484e",
+                    "primary-fixed": "#bee9ff",
+                    "surface": "#faf9f8",
+                    "on-tertiary-fixed-variant": "#930014",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base-unit": "8px",
+                    "margin-desktop": "48px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Lexend"],
+                    "headline-lg": ["Lexend"],
+                    "body-md": ["Lexend"],
+                    "label-bold": ["Lexend"],
+                    "body-lg": ["Lexend"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tactile-card {
+            border-bottom: 4px solid #bdc8cf;
+        }
+        .tactile-button-primary {
+            border-bottom: 6px solid #b88a00;
+        }
+        .tactile-button-primary:active {
+            transform: translateY(4px);
+            border-bottom-width: 2px;
+        }
+        .flag-tile {
+            border: 2px solid #e3e2e1;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-gray-900 flex justify-between items-center px-6 h-20 w-full docked full-width top border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:translate-y-1 active:border-b-0 transition-all duration-100">
+<span class="material-symbols-outlined text-sky-500 dark:text-sky-400" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-lexend font-black uppercase tracking-wide text-xl text-sky-500 dark:text-sky-400">Flag Quest</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:translate-y-1 active:border-b-0 transition-all duration-100">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-xl w-full flex flex-col items-center px-6 py-12 gap-8 text-center flex-1">
+<!-- Level Progress (Visual Cue) -->
+<div class="w-full h-4 bg-surface-container rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-secondary-container rounded-full"></div>
+</div>
+<!-- Central Flag Visual -->
+<div class="relative group">
+<div class="w-[300px] h-[200px] rounded-3xl overflow-hidden flag-tile bg-surface-container-lowest border-4 border-primary p-2">
+<div class="w-full h-full rounded-2xl overflow-hidden relative">
+<img alt="Flag of Vietnam" class="w-full h-full object-cover" data-alt="A high-quality, vibrant digital illustration of the national flag of Vietnam, featuring a bright red background with a large, golden-yellow five-pointed star centered perfectly. The style is clean and kid-friendly with a subtle fabric texture and soft directional lighting that gives it a three-dimensional toy-like quality. The colors are saturated and bold, adhering to a cheerful educational aesthetic for children." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJbeZGkReMGCCh3P0lbwgmJ2FaLbCKuCvQKelNJYnj7VH8FgqdD-nAUhBmfbcwopjq6z0nEc2Vfn2o811PmlQhtsUs00SyVj5PK58_QUUNCZ5FCpPzYpgGV8ScWHwhNvrlKO8r9stCeTZGfcxMKYLJuXUoCSDVZeEJNeD-Y3xS52ZQhvsS1MwHzXLwvbZe3GI8IMbQ6_SMd3yc5bhzFLK3RVStnPO8N15_sN8NqtR1CemtJgLq1mx6tDwPwJMA8HqG_TUGxg9XH_w"/>
+</div>
+</div>
+<!-- Decorative Sparkles -->
+<span class="material-symbols-outlined absolute -top-4 -left-4 text-secondary-container text-4xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined absolute -bottom-2 -right-4 text-primary-container text-4xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<!-- Country Title -->
+<div class="flex flex-col gap-2">
+<h2 class="font-headline-xl text-headline-xl text-primary">Vietnam</h2>
+<div class="flex justify-center items-center gap-2 px-4 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-label-bold font-label-bold">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+                SOUTHEAST ASIA
+            </div>
+</div>
+<!-- Fun Fact Card -->
+<div class="w-full bg-surface-container-low rounded-[32px] p-8 tactile-card flex flex-col items-center gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="waves">waves</span>
+</div>
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                This country has over <span class="text-secondary font-black">3,000 km</span> of coastline.
+            </p>
+</div>
+<!-- Spacer for push -->
+<div class="flex-grow"></div>
+<!-- Primary CTA -->
+<div class="w-full pb-8">
+<button class="w-full h-[72px] bg-secondary-container text-on-secondary-container font-headline-lg text-headline-lg rounded-[24px] tactile-button-primary transition-all flex items-center justify-center gap-3">
+                Start Challenge
+                <span class="material-symbols-outlined text-4xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</main>
+<!-- Bottom Padding/Safe Area -->
+<div class="h-6 w-full"></div>
+</body></html>
