@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { journeys } from "../../data/journeys";
-import { getJourneyCompletion, getJourneyCountries } from "../../lib/journey";
+import { getCurrentCountryIndex, getJourneyCompletion, getJourneyCountries } from "../../lib/journey";
 import { useGameProgressStore } from "../../lib/store";
 
 export default function JourneyMapPage() {
@@ -11,6 +11,7 @@ export default function JourneyMapPage() {
   const journeyProgress = progress.journeyProgressById[journey.id];
   const countries = getJourneyCountries(journey);
   const completion = getJourneyCompletion(journey, journeyProgress);
+  const currentIndex = getCurrentCountryIndex(journey, journeyProgress);
 
   return (
     <div className="page">
@@ -22,8 +23,8 @@ export default function JourneyMapPage() {
       <div className="map-path">
         {countries.map((country, index) => {
           const isComplete = journeyProgress?.completedCountryCodes.includes(country.code);
-          const isUnlocked = progress.unlockedCountryCodes.includes(country.code);
-          const isCurrent = isUnlocked && journeyProgress?.currentIndex === index && !isComplete;
+          const isUnlocked = progress.unlockedCountryCodes.includes(country.code) || index <= currentIndex;
+          const isCurrent = isUnlocked && currentIndex === index && !isComplete;
           const nodeClass = isComplete
             ? "is-complete"
             : isCurrent

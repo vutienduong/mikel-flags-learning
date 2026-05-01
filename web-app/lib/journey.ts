@@ -30,7 +30,7 @@ export function getInitialJourneyProgress(journey: Journey): JourneyProgress {
 }
 
 export function getCurrentCountryCode(journey: Journey, progress?: JourneyProgress) {
-  const index = Math.min(progress?.currentIndex ?? 0, journey.countryCodes.length - 1);
+  const index = getCurrentCountryIndex(journey, progress);
   return journey.countryCodes[index];
 }
 
@@ -48,4 +48,16 @@ export function getJourneyCompletion(journey: Journey, progress?: JourneyProgres
     total,
     percent: total ? Math.round((completed / total) * 100) : 0,
   };
+}
+
+export function getCurrentCountryIndex(journey: Journey, progress?: JourneyProgress) {
+  if (!progress) return 0;
+
+  const completedCodes = new Set(progress.completedCountryCodes);
+  const firstIncompleteIndex = journey.countryCodes.findIndex(
+    (code) => !completedCodes.has(code)
+  );
+
+  if (firstIncompleteIndex >= 0) return firstIncompleteIndex;
+  return Math.max(0, journey.countryCodes.length - 1);
 }

@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { journeys } from "../data/journeys";
+import { journeys, southeastAsiaMilestone } from "../data/journeys";
 import { getInitialJourneyProgress, getJourney, getNextCountryCode } from "./journey";
 import type { GameSession, JourneyProgress, RewardBundle, UserGameProgress } from "./types";
 
@@ -162,6 +162,22 @@ export const useGameProgressStore = create<GameProgressState>()(
           const badges = [...progress.badges];
 
           if (!badges.includes("first-quest")) badges.push("first-quest");
+          const isSoutheastAsiaMilestone =
+            journeyId === primaryJourney.id &&
+            countryCode === southeastAsiaMilestone.finalCountryCode &&
+            southeastAsiaMilestone.countryCodes.every((code) =>
+              [...progress.learnedCountryCodes, countryCode].includes(code)
+            );
+          const shouldGrantSoutheastAsiaMilestone =
+            isSoutheastAsiaMilestone &&
+            southeastAsiaMilestone.reward.badges.some((badge) => !badges.includes(badge));
+
+          if (shouldGrantSoutheastAsiaMilestone) {
+            for (const badge of southeastAsiaMilestone.reward.badges) {
+              if (!badges.includes(badge)) badges.push(badge);
+            }
+          }
+
           if (!badges.includes("flag-master")) {
             const totalStars =
               Object.values(progress.journeyProgressById).reduce(
@@ -173,8 +189,17 @@ export const useGameProgressStore = create<GameProgressState>()(
 
           progress = {
             ...progress,
-            xp: progress.xp + earnedXp,
-            level: Math.floor((progress.xp + earnedXp) / 100) + 1,
+            xp:
+              progress.xp +
+              earnedXp +
+              (shouldGrantSoutheastAsiaMilestone ? southeastAsiaMilestone.reward.xp : 0),
+            level:
+              Math.floor(
+                (progress.xp +
+                  earnedXp +
+                  (shouldGrantSoutheastAsiaMilestone ? southeastAsiaMilestone.reward.xp : 0)) /
+                  100
+              ) + 1,
             learnedCountryCodes: unique([...progress.learnedCountryCodes, countryCode]),
             unlockedCountryCodes: unique([...progress.unlockedCountryCodes, countryCode]),
             badges,

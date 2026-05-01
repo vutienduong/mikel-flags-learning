@@ -45,8 +45,8 @@ export default function ExplorePage() {
     <div className="page">
       <div style={{ display: "grid", gap: 22, marginBottom: 30 }}>
         <div>
-          <p className="kicker">Explore Flags</p>
-          <h1 className="page-title">Tap a flag to play</h1>
+          <p className="kicker">Study Facts</p>
+          <h1 className="page-title">Flags, capitals, area, population</h1>
         </div>
 
         <input
@@ -87,7 +87,7 @@ export default function ExplorePage() {
 
       <div className="explore-grid">
         {filtered.map((country) => (
-          <Link key={country.code} href={`/country/${country.code}`} className="toy-card explore-card">
+          <article key={country.code} className="toy-card explore-card">
             <div style={{ position: "relative" }}>
               <img src={country.flagUrl} alt={country.name} className="flag-img" />
               {learnedCodes.includes(country.code) && (
@@ -110,11 +110,23 @@ export default function ExplorePage() {
             </div>
             <div style={{ padding: 20, display: "grid", gap: 12 }}>
               <h2 style={{ fontSize: 24, fontWeight: 900 }}>{country.name}</h2>
-              <span className="primary-button" style={{ minHeight: 52 }}>
-                Tap to Play
-              </span>
+              <p className="body-copy" style={{ fontSize: 14 }}>
+                Capital: {country.capital}
+              </p>
+              <div className="action-row">
+                <Link href={`/country/${country.code}`} className="primary-button" style={{ minHeight: 52 }}>
+                  Study Facts
+                </Link>
+                <Link
+                  href={`/play/spot-odd/quick/${country.code}`}
+                  className="secondary-button"
+                  style={{ minHeight: 52 }}
+                >
+                  Play
+                </Link>
+              </div>
             </div>
-          </Link>
+          </article>
         ))}
       </div>
     </div>

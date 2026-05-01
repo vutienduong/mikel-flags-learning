@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
-import { badges, journeys } from "../../../../data/journeys";
+import { badges, southeastAsiaMilestone } from "../../../../data/journeys";
 import { getCountry, getJourney, getJourneyCompletion } from "../../../../lib/journey";
 import { useGameProgressStore } from "../../../../lib/store";
 
@@ -12,6 +12,8 @@ export default function JourneyCompletePage() {
   const progress = useGameProgressStore((s) => s.progress);
   const journey = getJourney(params.journeyId);
   const lastCountry = getCountry(searchParams.get("from") ?? "");
+  const nextCountry = getCountry(searchParams.get("next") ?? "");
+  const region = searchParams.get("region");
 
   if (!journey) {
     return (
@@ -28,19 +30,27 @@ export default function JourneyCompletePage() {
 
   const journeyProgress = progress.journeyProgressById[journey.id];
   const completion = getJourneyCompletion(journey, journeyProgress);
-  const rewardBadgeIds = journey.reward?.badges ?? [];
+  const isSoutheastAsiaMilestone = region === southeastAsiaMilestone.id;
+  const completedCount = isSoutheastAsiaMilestone
+    ? southeastAsiaMilestone.countryCodes.length
+    : completion.completed;
+  const totalCount = isSoutheastAsiaMilestone
+    ? southeastAsiaMilestone.countryCodes.length
+    : completion.total;
+  const reward = isSoutheastAsiaMilestone ? southeastAsiaMilestone.reward : journey.reward;
+  const rewardBadgeIds = reward?.badges ?? [];
   const rewardBadges = badges.filter((badge) => rewardBadgeIds.includes(badge.id));
-  const isPrimaryJourney = journeys[0]?.id === journey.id;
+  const title = isSoutheastAsiaMilestone ? southeastAsiaMilestone.title : `${journey.title} Complete`;
 
   return (
     <div className="page narrow-page">
       <section className="complete-stage">
         <div className="complete-medal">★</div>
-        <p className="kicker">Region Complete</p>
-        <h1 className="page-title">{journey.title}</h1>
+        <p className="kicker">{isSoutheastAsiaMilestone ? "Region Complete" : "Journey Complete"}</p>
+        <h1 className="page-title">{title}</h1>
         <p className="body-copy">
-          {isPrimaryJourney
-            ? "You finished every Southeast Asia flag checkpoint."
+          {isSoutheastAsiaMilestone
+            ? "You finished every Southeast Asia flag checkpoint. The world journey keeps going."
             : "You finished every country in this journey."}
         </p>
 
@@ -48,7 +58,7 @@ export default function JourneyCompletePage() {
           <div>
             <span className="kicker">Countries</span>
             <strong>
-              {completion.completed}/{completion.total}
+              {completedCount}/{totalCount}
             </strong>
           </div>
           <div>
@@ -57,7 +67,7 @@ export default function JourneyCompletePage() {
           </div>
           <div>
             <span className="kicker">Reward</span>
-            <strong>+{journey.reward?.xp ?? 0} XP</strong>
+            <strong>+{reward?.xp ?? 0} XP</strong>
           </div>
         </div>
 
@@ -79,9 +89,18 @@ export default function JourneyCompletePage() {
         </div>
 
         <div className="action-row" style={{ width: "100%" }}>
-          <Link href="/progress" className="primary-button">
-            View Progress
-          </Link>
+          {nextCountry ? (
+            <Link
+              href={`/journey/${journey.id}/unlock/${nextCountry.code}?from=${lastCountry?.code ?? ""}`}
+              className="primary-button"
+            >
+              Continue to {nextCountry.name}
+            </Link>
+          ) : (
+            <Link href="/progress" className="primary-button">
+              View Progress
+            </Link>
+          )}
           <Link href="/journey" className="secondary-button">
             Back to Map
           </Link>

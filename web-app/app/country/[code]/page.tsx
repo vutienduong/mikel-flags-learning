@@ -45,6 +45,9 @@ export default function CountryDetailPage() {
         <div>
           <p className="kicker">{country.region}</p>
           <h1 className="page-title">{country.name}</h1>
+          <p className="body-copy" style={{ marginTop: 10 }}>
+            Study the classic country facts, then jump into a flag challenge when ready.
+          </p>
         </div>
 
         <section className="toy-card" style={{ padding: 24, width: "100%", textAlign: "left" }}>

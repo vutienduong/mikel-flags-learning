@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getFunFact } from "../../../../data/funFacts";
-import { getCountry, getJourney } from "../../../../lib/journey";
+import { getCountry, getCurrentCountryCode, getJourney } from "../../../../lib/journey";
 import { useGameProgressStore } from "../../../../lib/store";
 
 export default function CountryIntroPage() {
@@ -25,7 +25,8 @@ export default function CountryIntroPage() {
     );
   }
 
-  const isUnlocked = progress.unlockedCountryCodes.includes(country.code);
+  const currentCode = getCurrentCountryCode(journey, progress.journeyProgressById[journey.id]);
+  const isUnlocked = progress.unlockedCountryCodes.includes(country.code) || country.code === currentCode;
 
   return (
     <div className="page narrow-page">

@@ -72,7 +72,7 @@ export default function HomePage() {
             ◴ Quick Play
           </Link>
           <Link href="/explore" className="secondary-button">
-            ◉ Explore
+            ◉ Study Facts
           </Link>
         </div>
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { southeastAsiaMilestone } from "../../../../../data/journeys";
 import { getCountry, getJourney, getNextCountryCode } from "../../../../../lib/journey";
 import {
   calculateOddFlagScore,
@@ -178,6 +179,11 @@ export default function SpotOddFlagPage() {
   const finalStars = didWin ? calculateOddFlagStars(mistakes, Date.now() - startTime.current) : 0;
   const timerPercent = (secondsLeft / 10) * 100;
   const rule = getOddFlagRule(activeCountry);
+  const shouldShowRegionMilestone =
+    didWin &&
+    params.journeyId !== "quick" &&
+    activeCountry.code === southeastAsiaMilestone.finalCountryCode &&
+    Boolean(nextCountryCode);
 
   return (
     <div>
@@ -253,7 +259,14 @@ export default function SpotOddFlagPage() {
                 +{didWin ? 10 + finalStars * 5 : 0} XP
               </p>
               <div className="action-row" style={{ marginTop: 22 }}>
-                {didWin && nextCountryCode ? (
+                {shouldShowRegionMilestone ? (
+                  <Link
+                    href={`/journey/${params.journeyId}/complete?region=${southeastAsiaMilestone.id}&from=${activeCountry.code}&next=${nextCountryCode}`}
+                    className="primary-button"
+                  >
+                    Claim Region Reward
+                  </Link>
+                ) : didWin && nextCountryCode ? (
                   <Link
                     href={`/journey/${params.journeyId}/unlock/${nextCountryCode}?from=${activeCountry.code}`}
                     className="primary-button"
