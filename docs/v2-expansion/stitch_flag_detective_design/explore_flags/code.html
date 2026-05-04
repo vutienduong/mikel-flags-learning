@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e3e2e1",
+                      "tertiary-fixed": "#ffdad7",
+                      "surface-container-high": "#e9e8e7",
+                      "on-tertiary-fixed-variant": "#930014",
+                      "on-primary-fixed-variant": "#004d65",
+                      "primary-fixed": "#bee9ff",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#eeeeec",
+                      "primary": "#006685",
+                      "outline": "#6d797f",
+                      "surface-tint": "#006685",
+                      "on-secondary-fixed": "#241a00",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-background": "#1a1c1b",
+                      "secondary": "#755b00",
+                      "on-primary-container": "#004459",
+                      "inverse-primary": "#6ad3ff",
+                      "on-tertiary-container": "#820010",
+                      "surface": "#faf9f8",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#594400",
+                      "outline-variant": "#bdc8cf",
+                      "primary-fixed-dim": "#6ad3ff",
+                      "on-surface": "#1a1c1b",
+                      "secondary-fixed": "#ffdf92",
+                      "on-tertiary-fixed": "#410004",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#ff857e",
+                      "error-container": "#ffdad6",
+                      "background": "#faf9f8",
+                      "on-primary-fixed": "#001f2a",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#bb1522",
+                      "surface-variant": "#e3e2e1",
+                      "tertiary-fixed-dim": "#ffb3ae",
+                      "surface-dim": "#dadad9",
+                      "secondary-fixed-dim": "#f4bf00",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-secondary-container": "#6e5400",
+                      "secondary-container": "#fec700",
+                      "primary-container": "#2bb6e6",
+                      "inverse-surface": "#2f3130",
+                      "surface-bright": "#faf9f8",
+                      "on-surface-variant": "#3d484e",
+                      "surface-container-low": "#f4f3f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "48px",
+                      "gutter": "16px",
+                      "margin-mobile": "24px",
+                      "touch-target-min": "56px",
+                      "base-unit": "8px"
+              },
+              "fontFamily": {
+                      "label-bold": ["Lexend"],
+                      "body-lg": ["Lexend"],
+                      "headline-lg": ["Lexend"],
+                      "body-md": ["Lexend"],
+                      "headline-xl": ["Lexend"]
+              },
+              "fontSize": {
+                      "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                      "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+        .block-shadow-card {
+            box-shadow: 0 4px 0 0 rgba(0,0,0,0.05);
+        }
+        .block-shadow-button-primary {
+            box-shadow: 0 6px 0 0 #ca8a04;
+        }
+        .block-shadow-button-primary:active {
+            box-shadow: 0 2px 0 0 #ca8a04;
+            transform: translateY(4px);
+        }
+        .block-shadow-button-secondary {
+            box-shadow: 0 6px 0 0 #e2e8f0;
+        }
+        .block-shadow-button-secondary:active {
+            box-shadow: 0 2px 0 0 #e2e8f0;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 border-b-4 border-slate-200 dark:border-slate-800 flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50">
+<div class="text-2xl font-black text-[#2BB6E6] tracking-tight uppercase font-lexend">Junior Navigator</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:scale-105 transition-transform active:translate-y-1">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pt-28 pb-12">
+<!-- Search & Filter Section -->
+<section class="mb-10 flex flex-col gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-16 pl-16 pr-6 bg-white border-4 border-slate-200 rounded-full font-body-lg text-on-surface focus:border-primary-container focus:ring-0 transition-all outline-none" placeholder="Search flags..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-6 py-3 bg-primary-container text-white rounded-full font-label-bold text-label-bold border-b-4 border-primary shadow-sm hover:scale-105 transition-all">All</button>
+<button class="px-6 py-3 bg-white border-4 border-slate-200 rounded-full font-label-bold text-label-bold text-slate-600 hover:bg-slate-50 hover:scale-105 transition-all">Asia</button>
+<button class="px-6 py-3 bg-white border-4 border-slate-200 rounded-full font-label-bold text-label-bold text-slate-600 hover:bg-slate-50 hover:scale-105 transition-all">Europe</button>
+<button class="px-6 py-3 bg-white border-4 border-slate-200 rounded-full font-label-bold text-label-bold text-slate-600 hover:bg-slate-50 hover:scale-105 transition-all">Americas</button>
+<button class="px-6 py-3 bg-white border-4 border-slate-200 rounded-full font-label-bold text-label-bold text-slate-600 hover:bg-slate-50 hover:scale-105 transition-all">Africa</button>
+<button class="px-6 py-3 bg-white border-4 border-slate-200 rounded-full font-label-bold text-label-bold text-slate-600 hover:bg-slate-50 hover:scale-105 transition-all">Oceania</button>
+</div>
+</section>
+<!-- Flag Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card: Vietnam -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A vivid and high-contrast digital illustration of the Vietnamese flag, featuring a bright red background and a central large yellow five-pointed star. The image is rendered in a playful, cartoonish style with soft highlights and a slight fabric texture that makes it look tactile and friendly. The lighting is bright and cheerful, matching a joyful educational game aesthetic for children." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfRmxW320JuHKN4_BSxXjuLmEJKGgV0iXxFkKxGNY_JzSy9NSya51CSgvGhSTs1bgpQVX34regAM-xwpapNfgpchlN0s02XQj4igY6qUkZHOanTXVdajvd8IaQi3yayRG8Car6AhKS1tW3jy7zwrYvemAzmiDvDlKzIwpJ4yKc7CBXnZfcLiz3_RCLoVOQPpI1HrPA0pWC9r1iXPIFu3fT6KYBsz-sipcRXb8-syNrdH43DAhmWCMvcFTdTE7p4nb7zps43uxJtO8"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Vietnam</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+<!-- Card: Japan -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A crisp digital graphic representing the Japanese flag, with a bold red sun circle centered on a pure white field. The design is clean and minimal, using a 'plastic' toy texture for the flag surface and vibrant, high-key lighting. The style is energetic and inviting, designed for a modern UI targeting young explorers with a focus on tactile world geography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWePa6SZcMhwwlPv9HjbFYi7ZOMZu7MJHzcvwvUhlNbS5atoNodx0uR29_tn-E1ozdM8IDPzgFQkl-keS-DDLPBO-Vce3mjwYxPbIDnWLEpSN-Hir8RE49uW7ii5nUMHFPRKawc9GIkWRcAYBNM6HbeQsCWUV1DwTHOu3R--VRCKSZsgZxRy0pzDg3DB6zfeQ-KvsV9wj-DdVRbRo51PlkP8aDGi93zNjeRHpi__MtEHnBUaNkKk4uzJfXszqoI-yM9CzMKw0YXJU"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Japan</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+<!-- Card: Brazil -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A colorful and saturated digital illustration of the Brazilian flag. The green field, yellow rhombus, and blue globe are rendered with thick, friendly borders and a slight 3D effect. The visual style is adventurous and encouraging, utilizing a bright palette and soft shadows to create a tangible, game-like experience for children learning about world flags." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFPlX7RFyM8EgBooeU7cYNX25dutQ8RAotxhEcusC56FAIPhfHVomh2zHDZ1DOCKr-goEjMbCiqth8F9_o7gvxainH9MOD3A9vuDZPpWdFajsZ0h1uZ9f6YPxiT8jP-eL46jdwoPmQqqd28ZZhMHvCBiV_6gUebCIYavsh3-X0OlzKlyS9jwOYH4oa8spPw9PWHeBNeD83QbnffBlkINXd07QthHKRQ00H1HG_vm7fxzmGF7qMHtDqTfXF1tNgtrs76cIlImt5hng"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Brazil</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+<!-- Card: Italy -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A bright and playful digital rendering of the Italian tricolor flag. The green, white, and red vertical bands are displayed with high contrast and a polished, toy-like finish. The lighting is sunny and optimistic, reinforcing the brand's 'joyful focus' identity. The composition is clean and centered, making it highly readable for a young audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR5Xe1FmrYEPQ1TjH_yaRMp48vwj_mEk82lUwWD0knp770eJhB6CTFd2GybOw2ppDRYf3GOX12wUElwyGVYPHY6Swckq4BGbD7cjRMx3dARI8YiafrGg4F6v9a0ZVsDqc0A5WWmazRHsZSW9t1m5PuvReOEAo0jUq87qNbcRlCTkyLXQCHS3n1iK4WXY9YvaSnkLucXYg7acg1R1S251pQONCR8Flhif39cFo4msZgFisXYU5gVhZv-HL1JczBLWnOz4_yqt_iijU"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Italy</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+<!-- Card: Canada -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A stylized digital representation of the Canadian flag with a vibrant red maple leaf. The flag appears as a tactile, high-quality physical object with rounded corners and a slight sheen. The mood is energetic and celebratory, with a color palette that pops against a clean, modern UI background. The design promotes discovery and learning through a friendly, cartoonish lens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4iOW6ajGnE_nNGSXJqVFzckXKMAUWard8UcYWYiAop15KEBBdueaR6Xx776HHhAwAgVZgESoBzg1U24xBPPAhlsc1KoRGkf0RAsfUbsBUvzpkXnnWov8D2H3M-Mz6ynhk5E7pBy73ThOUUR3zhINI0U-uXOjHotgvJeyxACEbA9wj-wMTstmiCzR5yEy7V8x0Ao4qFJUjfRiRkqJXpLZpQddcDCLM2EkYeT2V6Ax8Km_MW64u8Wwv8_PbQGL69XKMBEMYrbsv2vg"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Canada</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+<!-- Card: Australia -->
+<article class="bg-white border-4 border-slate-200 rounded-3xl overflow-hidden block-shadow-card flex flex-col hover:border-primary-container transition-colors group">
+<div class="aspect-video overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A playful digital illustration of the Australian flag, showcasing its blue field, Union Jack, and stars with a tactile, glossy surface. The lighting is soft and high-key, creating a warm, educational environment. The style is consistent with a gamified quest, using bold colors and thick borders to make the flag an engaging focal point for child learners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBffcnBWQ_quq-AGi2gd3Tarl7amRQoRImSc6n96loDpdTMkEPEBrX8JdOpT41gdZgm87E9xxvIAU7bvYaNjono1t4T-Hjee-uwy-JgjbeXHDmHOHn4wJg9I4JF6uZrCPHRo15wiKycpBIY7mWLogN_QTBLeDHQRXGbTL3mpSz6Al-UtvnGgF4ePSLuREMnucUKH5YEkp6iiREQ0t8uBim5jTOloDQDFwvOLCnh0r8CxKZkfRAxGdVheiG0N6kg_YNDsopZgnR4AV8"/>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Australia</h2>
+<button class="w-full bg-secondary-container text-on-secondary-container h-14 rounded-2xl font-label-bold text-label-bold uppercase flex items-center justify-center block-shadow-button-primary transition-all">
+                        Tap to Play
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end h-24 pb-4 px-4 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 shadow-[0_-8px_0_0_rgba(0,0,0,0.05)]">
+<!-- Explore (Active) -->
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-white rounded-2xl p-3 shadow-[0_4px_0_0_#ca8a04] -translate-y-2 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-lexend font-bold text-xs uppercase mt-1">Explore</span>
+</a>
+<!-- Quest -->
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-lexend font-bold text-xs uppercase mt-1">Quest</span>
+</a>
+<!-- Backpack -->
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">backpack</span>
+<span class="font-lexend font-bold text-xs uppercase mt-1">Backpack</span>
+</a>
+</nav>
+</body></html>

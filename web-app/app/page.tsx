@@ -1,126 +1,93 @@
 "use client";
 
 import Link from "next/link";
-import { useProgressStore } from "../lib/store";
-import countriesData from "../data/countries.json";
-import { useMemo } from "react";
+import { getFunFact } from "../data/funFacts";
+import { journeys } from "../data/journeys";
+import { getCountry, getCurrentCountryCode, getJourneyCompletion } from "../lib/journey";
+import { useGameProgressStore } from "../lib/store";
 
 export default function HomePage() {
-  const learnedCount = useProgressStore((s) => s.learnedCodes.length);
-  const totalCount = countriesData.length;
-
-  const decorFlags = useMemo(() => {
-    return [...countriesData].sort(() => Math.random() - 0.5).slice(0, 12);
-  }, []);
+  const progress = useGameProgressStore((s) => s.progress);
+  const journey = journeys[0];
+  const journeyProgress = progress.journeyProgressById[journey.id];
+  const currentCode = getCurrentCountryCode(journey, journeyProgress);
+  const currentCountry = getCountry(currentCode);
+  const completion = getJourneyCompletion(journey, journeyProgress);
 
   return (
-    <div style={styles.hero}>
-      <div style={styles.flagGrid}>
-        {decorFlags.map((c) => (
-          <img key={c.code} src={c.flagUrl} alt="" style={styles.decorFlag} />
-        ))}
-      </div>
-      <div style={styles.overlay} />
+    <div className="page narrow-page">
+      <div className="dashboard-grid">
+        <section style={{ display: "grid", gap: 8 }}>
+          <p className="kicker">Welcome back, Explorer!</p>
+          <h1 className="section-title">Ready for a new quest?</h1>
+        </section>
 
-      <div className="container" style={styles.content}>
-        <h1 style={styles.title}>Flags of the World</h1>
-        <p style={styles.subtitle}>Master all flags of the world with ease and fun.</p>
-        
-        <div style={styles.stat}>
-          {learnedCount} / {totalCount} flags learned
+        <section className="toy-card journey-card">
+          <div className="card-badge">◎</div>
+          <div style={{ display: "grid", gap: 18 }}>
+            <div>
+              <h2 style={{ fontSize: 24, fontWeight: 900 }}>{journey.title}</h2>
+              <p className="kicker" style={{ marginTop: 4 }}>
+                Current region
+              </p>
+            </div>
+
+            <img
+              src={journey.heroImage}
+              alt={`${journey.title} landscape`}
+              className="journey-hero-img"
+            />
+
+            <div style={{ display: "grid", gap: 10 }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: 16,
+                  alignItems: "end",
+                }}
+              >
+                <span style={{ fontWeight: 900 }}>Progress</span>
+                <span style={{ color: "var(--primary)", fontSize: 20, fontWeight: 900 }}>
+                  {completion.completed}/{completion.total} countries
+                </span>
+              </div>
+              <div className="progress-track">
+                <div className="progress-fill" style={{ width: `${completion.percent}%` }} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Link
+          href={`/journey/${journey.id}/${currentCode}`}
+          className="primary-button"
+          style={{ width: "100%", minHeight: 72 }}
+        >
+          ▶ Continue Journey
+        </Link>
+
+        <div className="action-row">
+          <Link href="/quick-play" className="secondary-button">
+            ◴ Quick Play
+          </Link>
+          <Link href="/explore" className="secondary-button">
+            ◉ Study Facts
+          </Link>
         </div>
 
-        <div style={styles.actions}>
-          <Link href="/explore" style={styles.primaryBtn}>
-            Start Learning 🚩
-          </Link>
-          <Link href="/quiz" style={styles.secondaryBtn}>
-            Take a Quiz ❓
-          </Link>
-        </div>
+        <section className="fact-strip">
+          <div className="fact-icon">!</div>
+          <div>
+            <h2 style={{ color: "var(--primary)", fontSize: 18, fontWeight: 900 }}>
+              Did you know?
+            </h2>
+            <p className="body-copy" style={{ fontSize: 15 }}>
+              {getFunFact(currentCountry?.code ?? "th")}
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
 }
-
-const styles: Record<string, any> = {
-  hero: {
-    position: "relative",
-    height: "calc(100vh - 64px)",
-    backgroundColor: "#111827",
-    overflow: "hidden",
-    display: "flex",
-    alignItems: "center",
-  },
-  flagGrid: {
-    position: "absolute",
-    top: 0, left: 0, right: 0, bottom: 0,
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gridTemplateRows: "repeat(3, 1fr)",
-  },
-  decorFlag: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    opacity: 0.2,
-  },
-  overlay: {
-    position: "absolute",
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: "radial-gradient(circle, rgba(17,24,39,0.4) 0%, rgba(17,24,39,0.9) 100%)",
-  },
-  content: {
-    position: "relative",
-    zIndex: 1,
-    textAlign: "center",
-    color: "#ffffff",
-  },
-  title: {
-    fontSize: "64px",
-    fontWeight: "900",
-    marginBottom: "16px",
-    letterSpacing: "-1px",
-  },
-  subtitle: {
-    fontSize: "20px",
-    color: "#d1d5db",
-    marginBottom: "32px",
-    maxWidth: "600px",
-    margin: "0 auto 32px",
-  },
-  stat: {
-    display: "inline-block",
-    padding: "8px 16px",
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: "24px",
-    fontSize: "14px",
-    fontWeight: "600",
-    border: "1px solid rgba(255,255,255,0.2)",
-    marginBottom: "48px",
-  },
-  actions: {
-    display: "flex",
-    gap: "16px",
-    justifyContent: "center",
-  },
-  primaryBtn: {
-    padding: "16px 32px",
-    backgroundColor: "#2563eb",
-    borderRadius: "12px",
-    fontSize: "18px",
-    fontWeight: "700",
-    color: "#ffffff",
-    transition: "transform 0.2s",
-  },
-  secondaryBtn: {
-    padding: "16px 32px",
-    backgroundColor: "transparent",
-    border: "2px solid rgba(255,255,255,0.3)",
-    borderRadius: "12px",
-    fontSize: "18px",
-    fontWeight: "700",
-    color: "#ffffff",
-    transition: "background 0.2s",
-  },
-};

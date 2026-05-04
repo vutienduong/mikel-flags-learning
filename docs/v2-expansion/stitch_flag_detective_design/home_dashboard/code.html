@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flag Quest - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#faf9f8",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "surface-container-high": "#e9e8e7",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001f2a",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#006685",
+                    "primary-fixed-dim": "#6ad3ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad7",
+                    "tertiary": "#bb1522",
+                    "surface-variant": "#e3e2e1",
+                    "primary": "#006685",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-tertiary-fixed": "#410004",
+                    "outline-variant": "#bdc8cf",
+                    "on-tertiary-fixed-variant": "#930014",
+                    "inverse-primary": "#6ad3ff",
+                    "secondary-container": "#fec700",
+                    "surface-dim": "#dadad9",
+                    "on-surface": "#1a1c1b",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "background": "#faf9f8",
+                    "surface-container": "#eeeeec",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffdf92",
+                    "on-tertiary-container": "#820010",
+                    "secondary": "#755b00",
+                    "tertiary-container": "#ff857e",
+                    "error": "#ba1a1a",
+                    "surface": "#faf9f8",
+                    "primary-container": "#2bb6e6",
+                    "on-primary-fixed-variant": "#004d65",
+                    "on-secondary-container": "#6e5400",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1b",
+                    "surface-container-low": "#f4f3f2",
+                    "primary-fixed": "#bee9ff",
+                    "outline": "#6d797f",
+                    "on-surface-variant": "#3d484e",
+                    "secondary-fixed-dim": "#f4bf00",
+                    "on-primary-container": "#004459"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "48px",
+                    "margin-mobile": "24px",
+                    "gutter": "16px",
+                    "base-unit": "8px",
+                    "touch-target-min": "56px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Lexend"],
+                    "headline-lg": ["Lexend"],
+                    "body-md": ["Lexend"],
+                    "body-lg": ["Lexend"],
+                    "headline-xl": ["Lexend"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .pressed-button:active {
+            transform: translateY(4px);
+        }
+        .block-shadow-primary {
+            box-shadow: 0 6px 0 0 #004d65;
+        }
+        .block-shadow-secondary {
+            box-shadow: 0 6px 0 0 #d1d5db;
+        }
+        .block-shadow-cta {
+            box-shadow: 0 6px 0 0 #a47c00;
+        }
+        .block-shadow-card {
+            box-shadow: 0 4px 0 0 #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-surface-bright font-body-md text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="bg-white sticky top-0 z-40 w-full border-b-4 border-slate-200 flex justify-between items-center px-6 py-4 h-20 shadow-[0_4px_0_0_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Child adventurer avatar" class="w-full h-full object-cover" data-alt="A friendly, expressive cartoon 3D avatar of a young child wearing an explorer hat and binoculars. The character is smiling warmly against a soft, bright blue studio background. The lighting is high-key and cheerful, following a modern 3D animation aesthetic with vibrant, saturated colors and smooth textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJ8izcN3OfK6ZbghSKiErGUpFKf1sduseDIfBSRqxDdz1TpioOMXCwwurThnjcbJRtRTMLcYvKxTUUGdQteRB5AHidyQvSJFaVXNVm0DY4OxlBam6eNo5-FeS2CVGKfoqzk2vEcOi-4CLThLUjzG1X8AnjvY96gAZfVBIr-Wib_OwfgxfQ3m82LI6zqN5SDMFpKHft1VuSCX2hVn-FL9jAfzVGm4PMqDIe_ngP7ughFwvSE5Tkizu2goSjom-wDLECJhJsCC94ZY"/>
+</div>
+<h1 class="font-['Lexend'] font-extrabold uppercase tracking-tight text-2xl italic text-sky-500">Flag Quest</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-error-container text-tertiary px-3 py-1.5 rounded-full border-2 border-tertiary-container/30 font-bold">
+<span class="material-symbols-outlined text-xl mr-1" data-icon="local_fire_department">local_fire_department</span>
+<span class="text-sm">Day 3</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-3xl" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-md px-6 py-8 flex-grow mb-32 space-y-8">
+<!-- Welcome Hero -->
+<section class="space-y-2">
+<p class="text-primary font-label-bold uppercase tracking-wider">Welcome back, Explorer!</p>
+<h2 class="text-on-surface font-headline-lg">Ready for a new quest?</h2>
+</section>
+<!-- Southeast Asia Card -->
+<section class="relative bg-white rounded-[16px] p-6 border-2 border-slate-200 block-shadow-card">
+<div class="absolute -top-4 -right-2 bg-primary-container text-white p-3 rounded-2xl shadow-lg rotate-12">
+<span class="material-symbols-outlined text-2xl" data-icon="public">public</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="space-y-1">
+<h3 class="text-on-surface font-headline-lg">Southeast Asia</h3>
+<p class="text-on-surface-variant font-label-bold">CURRENT REGION</p>
+</div>
+<div class="relative w-full h-[180px] rounded-xl overflow-hidden bg-slate-100 mb-2 border-2 border-slate-200">
+<img alt="Southeast Asia Scenic" class="w-full h-full object-cover" data-alt="A panoramic, vibrant digital illustration of a lush Southeast Asian landscape featuring ancient temple silhouettes, tropical palm trees, and a clear blue sky. The visual style is playful and simplified with high contrast and bright, sunny colors. The scene is illuminated by warm, golden sunlight, creating a cheerful and adventurous atmosphere." data-location="Thailand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp_SWeE8icQMKBdzCL3LUG0bCsIl9D3CPq64jyqushOjSVt9yiLThikZUN8w01O7XSojljXOy_pUhzNNJdU6hUkHad11mNs-_wFb-IXtQXVljDEO-QxZeTlgYdOFoaF1UTSb1JeuwbR8LgQbDZdZxOeXoTUkN_lW7GZK0rQ2XGBprJm3_lODjfzHgL_y2hrEBaNbMq1Yrw7BAx_-27c1t3oXU_XWC6kC7Hu0su1ldjxtzK4GeCdcgt0jn3huVntPJu7SZRdlmq3pw"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-on-surface font-label-bold">Progress</span>
+<span class="text-primary font-label-bold text-lg">3/10 countries</span>
+</div>
+<div class="w-full h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-slate-200">
+<div class="h-full bg-secondary-container w-[30%] transition-all duration-500 rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main CTA -->
+<button class="w-full h-[72px] bg-secondary-container rounded-2xl flex items-center justify-center gap-3 border-2 border-on-secondary-container pressed-button block-shadow-cta transition-all">
+<span class="material-symbols-outlined text-3xl text-on-secondary-fixed" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-label-bold text-xl text-on-secondary-fixed">Continue Journey</span>
+</button>
+<!-- Secondary Actions -->
+<div class="grid grid-cols-2 gap-4">
+<button class="h-[56px] bg-white border-2 border-slate-200 rounded-2xl flex items-center justify-center gap-2 pressed-button block-shadow-secondary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+<span class="font-label-bold text-on-surface">Quick Play</span>
+</button>
+<button class="h-[56px] bg-white border-2 border-slate-200 rounded-2xl flex items-center justify-center gap-2 pressed-button block-shadow-secondary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="font-label-bold text-on-surface">Explore</span>
+</button>
+</div>
+<!-- Fun Fact Bento Section -->
+<section class="bg-primary-container/10 p-5 rounded-[24px] border-2 border-dashed border-primary-container flex gap-4 items-center">
+<div class="bg-white p-3 rounded-full border-2 border-primary-container">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="lightbulb">lightbulb</span>
+</div>
+<div>
+<h4 class="font-label-bold text-primary">Did you know?</h4>
+<p class="text-sm text-on-surface-variant">Thailand's flag has 5 stripes in 3 colors: red, white, and blue!</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 shadow-[0_-4px_0_0_rgba(0,0,0,0.05)] flex justify-around items-center px-4 pt-2 pb-6">
+<!-- Home Active -->
+<div class="flex flex-col items-center justify-center bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300 rounded-2xl px-6 py-2 border-b-4 border-sky-300 dark:border-sky-700 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Lexend'] font-bold text-xs">Home</span>
+</div>
+<!-- Journey Inactive -->
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-2xl active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Lexend'] font-bold text-xs">Journey</span>
+</div>
+<!-- Progress Inactive -->
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-2xl active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Lexend'] font-bold text-xs">Progress</span>
+</div>
+</nav>
+</body></html>

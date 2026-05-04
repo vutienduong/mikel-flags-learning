@@ -1,103 +1,158 @@
 "use client";
 
-import { useProgressStore } from "../../lib/store";
+import Link from "next/link";
 import countriesData from "../../data/countries.json";
+import { badges } from "../../data/journeys";
+import { journeys } from "../../data/journeys";
+import { getJourneyCompletion } from "../../lib/journey";
+import { useGameProgressStore } from "../../lib/store";
 
 export default function ProgressPage() {
-  const { learnedCodes, quizHighScore, quizTotalPlayed, resetProgress } = useProgressStore();
-
-  const learnedCount = learnedCodes.length;
+  const { progress, resetProgress } = useGameProgressStore();
+  const learnedCount = progress.learnedCountryCodes.length;
   const totalCount = countriesData.length;
   const learnedPercent = Math.round((learnedCount / totalCount) * 100);
+  const journey = journeys[0];
+  const completion = getJourneyCompletion(journey, progress.journeyProgressById[journey.id]);
 
   return (
-    <div className="container" style={{ padding: "40px 16px", maxWidth: "800px" }}>
-      <h1 style={{ fontSize: "32px", fontWeight: "800", marginBottom: "32px" }}>Your Progress</h1>
-
-      <div style={styles.statsGrid}>
-        <div style={styles.statCard}>
-          <p style={styles.statLabel}>Countries Learned</p>
-          <p style={styles.statValue}>{learnedCount} / {totalCount}</p>
-          <div style={styles.progressBar}>
-            <div style={{ ...styles.progressFill, width: `${learnedPercent}%` }} />
-          </div>
-          <p style={styles.statSub}>{learnedPercent}% completed</p>
-        </div>
-
-        <div style={styles.statCard}>
-          <p style={styles.statLabel}>Quiz High Score</p>
-          <p style={styles.statValue}>{quizHighScore} <span style={{ fontSize: "16px", color: "#6b7280" }}>/ 10</span></p>
-        </div>
-
-        <div style={styles.statCard}>
-          <p style={styles.statLabel}>Quizzes Played</p>
-          <p style={styles.statValue}>{quizTotalPlayed}</p>
-        </div>
+    <div className="page narrow-page">
+      <div style={{ marginBottom: 28 }}>
+        <p className="kicker">Junior Navigator</p>
+        <h1 className="page-title">Your Progress</h1>
       </div>
 
-      <div style={{ marginTop: "64px", textAlign: "center" }}>
-        <button
-          onClick={() => {
-            if (confirm("Are you sure you want to reset all your progress?")) {
-              resetProgress();
-            }
+      <section className="toy-card" style={{ padding: 28, marginBottom: 28 }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "120px 1fr",
+            gap: 28,
+            alignItems: "center",
           }}
-          style={styles.resetBtn}
         >
-          Reset All Progress
-        </button>
+          <div
+            style={{
+              width: 112,
+              height: 112,
+              display: "grid",
+              placeItems: "center",
+              border: "12px solid #eef3f7",
+              borderTopColor: "var(--primary-bright)",
+              borderRadius: "50%",
+              color: "var(--primary)",
+              fontSize: 28,
+              fontWeight: 900,
+            }}
+          >
+            {learnedPercent}%
+          </div>
+          <div>
+            <h2 className="section-title" style={{ fontSize: 32 }}>
+              Countries learned
+            </h2>
+            <p style={{ fontSize: 34, fontWeight: 900 }}>
+              {learnedCount} <span style={{ color: "#b9c4cf" }}>/ {totalCount}</span>
+            </p>
+            <div className="progress-track" style={{ marginTop: 14 }}>
+              <div className="progress-fill green-fill" style={{ width: `${learnedPercent}%` }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="action-row" style={{ marginBottom: 34 }}>
+        <section
+          style={{
+            minHeight: 128,
+            padding: 24,
+            borderRadius: 24,
+            background: "var(--secondary)",
+            boxShadow: "0 7px 0 var(--secondary-edge)",
+          }}
+        >
+          <p className="kicker" style={{ color: "#755b00" }}>
+            Current streak
+          </p>
+          <h2 style={{ color: "#6e5400", fontSize: 32, fontWeight: 900 }}>
+            {progress.streak.current} days
+          </h2>
+        </section>
+        <section
+          style={{
+            minHeight: 128,
+            padding: 24,
+            borderRadius: 24,
+            background: "var(--primary-bright)",
+            boxShadow: "0 7px 0 var(--primary)",
+            color: "#ffffff",
+          }}
+        >
+          <p className="kicker" style={{ color: "#e7f8ff" }}>
+            XP Level
+          </p>
+          <h2 style={{ fontSize: 32, fontWeight: 900 }}>Level {progress.level}</h2>
+        </section>
       </div>
+
+      <section style={{ marginBottom: 34 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+          <h2 className="section-title" style={{ fontSize: 32 }}>
+            Your Badges
+          </h2>
+          <Link href="/journey" style={{ color: "var(--primary)", fontWeight: 900 }}>
+            View Map
+          </Link>
+        </div>
+        <div className="explore-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          {badges.map((badge) => {
+            const unlocked = progress.badges.includes(badge.id);
+            return (
+              <div
+                key={badge.id}
+                className="toy-card"
+                style={{
+                  minHeight: 136,
+                  display: "grid",
+                  placeItems: "center",
+                  padding: 16,
+                  textAlign: "center",
+                  opacity: unlocked ? 1 : 0.38,
+                  borderStyle: unlocked ? "solid" : "dashed",
+                }}
+              >
+                <div style={{ fontSize: 30, color: "var(--primary-bright)" }}>{badge.icon}</div>
+                <strong>{unlocked ? badge.title : "Locked"}</strong>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="toy-card" style={{ padding: 24, marginBottom: 28 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+          <strong>{journey.title}</strong>
+          <strong style={{ color: "var(--primary)" }}>{completion.percent}%</strong>
+        </div>
+        <div className="progress-track">
+          <div className="progress-fill" style={{ width: `${completion.percent}%` }} />
+        </div>
+      </section>
+
+      <Link href="/" className="primary-button" style={{ width: "100%", marginBottom: 18 }}>
+        ▶ Continue Journey
+      </Link>
+
+      <button
+        type="button"
+        className="danger-button"
+        style={{ width: "100%" }}
+        onClick={() => {
+          if (window.confirm("Reset all local progress?")) resetProgress();
+        }}
+      >
+        Reset Progress
+      </button>
     </div>
   );
 }
-
-const styles: Record<string, any> = {
-  statsGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "24px",
-  },
-  statCard: {
-    backgroundColor: "#ffffff",
-    padding: "24px",
-    borderRadius: "20px",
-    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
-    border: "1px solid #f3f4f6",
-  },
-  statLabel: {
-    fontSize: "14px",
-    fontWeight: "600",
-    color: "#6b7280",
-    marginBottom: "8px",
-  },
-  statValue: {
-    fontSize: "32px",
-    fontWeight: "800",
-    color: "#111827",
-  },
-  progressBar: {
-    height: "6px",
-    backgroundColor: "#e5e7eb",
-    borderRadius: "3px",
-    marginTop: "16px",
-    overflow: "hidden",
-  },
-  progressFill: {
-    height: "100%",
-    backgroundColor: "#10b981",
-  },
-  statSub: {
-    fontSize: "12px",
-    color: "#6b7280",
-    marginTop: "8px",
-  },
-  resetBtn: {
-    color: "#ef4444",
-    backgroundColor: "transparent",
-    fontSize: "14px",
-    fontWeight: "600",
-    padding: "8px 16px",
-    borderRadius: "8px",
-    border: "1px solid #fee2e2",
-  },
-};

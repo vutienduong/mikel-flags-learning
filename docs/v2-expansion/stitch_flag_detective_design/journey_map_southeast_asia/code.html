@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2bb6e6",
+                        "background": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#410004",
+                        "outline-variant": "#bdc8cf",
+                        "secondary": "#755b00",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#bee9ff",
+                        "on-primary-fixed": "#001f2a",
+                        "on-primary-container": "#004459",
+                        "on-tertiary-container": "#820010",
+                        "outline": "#6d797f",
+                        "on-secondary-fixed": "#241a00",
+                        "on-surface-variant": "#3d484e",
+                        "surface-variant": "#e3e2e1",
+                        "surface-dim": "#dadad9",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdad7",
+                        "inverse-on-surface": "#f1f1ef",
+                        "primary": "#006685",
+                        "secondary-fixed": "#ffdf92",
+                        "on-surface": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#594400",
+                        "surface-container": "#eeeeec",
+                        "surface-container-low": "#f4f3f2",
+                        "primary-fixed-dim": "#6ad3ff",
+                        "tertiary-container": "#ff857e",
+                        "on-secondary-container": "#6e5400",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-background": "#1a1c1b",
+                        "surface": "#faf9f8",
+                        "surface-bright": "#faf9f8",
+                        "secondary-container": "#fec700",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#bb1522",
+                        "surface-tint": "#006685",
+                        "inverse-primary": "#6ad3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#f4bf00",
+                        "surface-container-high": "#e9e8e7",
+                        "on-primary-fixed-variant": "#004d65",
+                        "on-tertiary-fixed-variant": "#930014",
+                        "inverse-surface": "#2f3130",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb3ae"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "24px",
+                        "touch-target-min": "56px",
+                        "margin-desktop": "48px",
+                        "base-unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "label-bold": ["Lexend"],
+                        "headline-xl": ["Lexend"],
+                        "body-lg": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .tactile-press:active {
+            transform: translateY(4px);
+        }
+        .dashed-path {
+            background-image: repeating-linear-gradient(90deg, #bdc8cf, #bdc8cf 10px, transparent 10px, transparent 20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background">
+<header class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-slate-900 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_6px_0_0_#e2e8f0] h-20 flex justify-between items-center px-6">
+<button class="tactile-press p-2 rounded-xl bg-slate-100 hover:scale-105 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-lexend font-bold text-lg uppercase tracking-wider text-slate-800 dark:text-white">Southeast Asia</h1>
+<button class="tactile-press p-2 rounded-xl bg-slate-100 hover:scale-105 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-3xl" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-48 min-h-screen px-gutter flex flex-col items-center">
+<div class="w-full max-w-md relative py-12">
+<div class="absolute left-1/2 top-10 bottom-10 w-2 -translate-x-1/2 border-l-4 border-dashed border-outline-variant z-0"></div>
+<div class="relative z-10 flex flex-col gap-24 items-center">
+<div class="flex flex-col items-center group">
+<div class="relative w-32 h-32 rounded-full bg-white border-4 border-green-500 shadow-[0_8px_0_0_#22c55e] flex items-center justify-center overflow-hidden">
+<img alt="Vietnam" class="w-full h-full object-cover opacity-80" data-alt="A bright and colorful digital illustration of the national flag of Vietnam with its iconic yellow star on a deep red field. The style is clean, modern, and educational, set against a soft, bright-mode background that emphasizes adventurous learning for children. The lighting is cheerful and flat, typical of a high-quality puzzle or educational mobile game." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIVfJ7QIjqtKc2ngpurtHq7C5d0_RJbl4FJkDrG9DT00CB8uApR4GYHZhpHorV8dsLFyFlh7c4BnFHN2kN8EGWJXFPeN3vEnBB7XR2VV7wTE7mFuFJOfqF4adECrkFi8P17bAHKn9IQ4zQSYkG605L52d_-_p70IXFiBEWvfjNmRqB5eDZJ61SNdYAlbdhnCQhHF-s-pw_jPZkR-N8F0XwO5tElpoxhh-M24gK5Z-Jhs5gnahQ2ddkkXMk9risv2zUFAFUM7HXRa0"/>
+<div class="absolute inset-0 bg-green-500/20"></div>
+<div class="absolute -top-1 -right-1 bg-yellow-400 p-2 rounded-full border-4 border-white shadow-md">
+<span class="material-symbols-outlined text-white text-2xl filled-icon" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="mt-4 font-label-bold text-lg text-slate-700 bg-white px-4 py-1 rounded-full border-2 border-slate-200">VIETNAM</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="relative w-40 h-40 rounded-full bg-white border-[6px] border-primary-container shadow-[0_10px_0_0_#006685] flex items-center justify-center overflow-hidden animate-pulse">
+<img alt="Thailand" class="w-full h-full object-cover" data-alt="A vibrant digital graphic of the Thailand national flag with its distinctive red, white, and blue horizontal stripes. The flag is presented in a circular, friendly frame with a high-contrast aesthetic suitable for children. The overall visual tone is energetic and encouraging, lit by soft, bright ambient light consistent with a premium educational journey game." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8rIBmCvJ2rBPQ27vNqSE9Wc4xb4xzy213qoCi4qYZyjCtkg_Xue88AbOLefowllk0fhkcr6MfEOORvXsV7UtmcAwLKZJ97E7pO8zaEjdMu_tvt-9rbDyChUap8e53TrlVy6ijsq0ZTOyYDPH0M2eIaTVoCDcPOElNEFElMOg7bA9Z52q7dQxjc1o5eA7ORLNbfAY5WV-NNOyPbRJ8auQ6cwZXGEIJZa2ciz387MxepH1QO9qc_3pSgYfUAj6g653z9UyhiSTf1qU"/>
+<div class="absolute inset-0 flex items-center justify-center bg-primary-container/10">
+<span class="material-symbols-outlined text-primary-container text-6xl opacity-40" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+<div class="mt-4 bg-primary-container text-white font-label-bold text-xl px-6 py-2 rounded-2xl border-b-4 border-primary shadow-lg tactile-press cursor-pointer">
+                        PLAY NOW!
+                    </div>
+<span class="mt-2 font-label-bold text-lg text-primary">THAILAND</span>
+</div>
+<div class="flex flex-col items-center grayscale opacity-60">
+<div class="relative w-32 h-32 rounded-full bg-slate-200 border-4 border-slate-400 shadow-[0_8px_0_0_#94a3b8] flex items-center justify-center overflow-hidden">
+<img alt="Malaysia" class="w-full h-full object-cover" data-alt="The Malaysian flag showing its crescent and star design, rendered in a slightly desaturated and stylized format for an educational app. The visual style is playful yet clear, using tactile textures and block shadows to define depth. The atmosphere is quiet and locked, awaiting player discovery within the Southeast Asian quest theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDbo91f8BHqxGLOQ6T0XaiLBGGPJdY3bvnQqpFnUH6E94IwYTIRO1d-VNbApcojSyb6_TxhVC9BPFK5Fxrc2qwsDKhuAupPxgWMl3q-JcwZnlZygtAtHAuZu9bkexuV1_g1-fpZ0sGwJTvHHDW3ACaY74AZa1X8Ar1DEJq5I3vGWIrI85M7TbmnQah8uHltNKrTSfDTM363Ykov3mC7-OWthPQOaO8q0PLZ8xvIq4wTCE_9ZCTWFkZb2tfnhLzMnYwjEItzf3hCZw"/>
+<div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl" data-icon="lock">lock</span>
+</div>
+</div>
+<span class="mt-4 font-label-bold text-lg text-slate-500">MALAYSIA</span>
+</div>
+<div class="flex flex-col items-center grayscale opacity-60">
+<div class="relative w-32 h-32 rounded-full bg-slate-200 border-4 border-slate-400 shadow-[0_8px_0_0_#94a3b8] flex items-center justify-center overflow-hidden">
+<img alt="Singapore" class="w-full h-full object-cover" data-alt="A clean digital rendering of the Singapore flag with its crescent and five stars on a red and white field. The design follows a tactile, toy-like aesthetic with thick strokes and high-quality finishes. The lighting is soft and global, maintaining a bright and welcoming appearance despite being in a locked game state." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDarewH-4KO5mZOadlcKFMaZu5fiLphAB4BDonpWSc_-n1HaGzwc5mnkgsGHdQY4RDeAfeQFaKkNoPeIDlmB_utcUibS8dWMskiRgH8y1_cejYZgbt57A1WsQtLco1FC5V0AClC8UqC2710AQbgytzq8-dUrah9MsDsjJgTGy-frQVE9GMuFMwVebkxnvBWr7U3ic09_gU93NxBNHgYXwyAq_j1jdjYin4y1V6UDjpc5xTbdVd1jypBfwkMAw5BUCwwFxF59F7jKDg"/>
+<div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl" data-icon="lock">lock</span>
+</div>
+</div>
+<span class="mt-4 font-label-bold text-lg text-slate-500">SINGAPORE</span>
+</div>
+</div>
+</div>
+</main>
+<section class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-lg z-40">
+<div class="bg-white rounded-[32px] p-6 shadow-[0_8px_0_0_#e2e8f0] border-4 border-slate-100">
+<div class="flex justify-between items-center mb-3">
+<span class="font-headline-lg text-primary text-xl">1 / 4 COUNTRIES</span>
+<span class="font-headline-lg text-secondary text-2xl">25%</span>
+</div>
+<div class="w-full h-8 bg-slate-100 rounded-full border-4 border-slate-200 relative overflow-hidden">
+<div class="h-full bg-green-500 rounded-full border-r-4 border-green-700 w-1/4 flex items-center justify-end px-2">
+<div class="w-2 h-2 bg-white/40 rounded-full animate-pulse"></div>
+</div>
+</div>
+</div>
+</section>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] h-24 flex justify-around items-center px-4 pb-6 pt-2">
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:bg-slate-100 rounded-2xl transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="home">home</span>
+<span class="font-lexend font-extrabold text-[10px] uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-yellow-900 rounded-2xl px-8 py-2 border-b-4 border-yellow-700 mb-2 shadow-md" href="#">
+<span class="material-symbols-outlined text-3xl filled-icon" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-lexend font-extrabold text-[10px] uppercase mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:bg-slate-100 rounded-2xl transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="backpack">backpack</span>
+<span class="font-lexend font-extrabold text-[10px] uppercase mt-1">Backpack</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:bg-slate-100 rounded-2xl transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="person">person</span>
+<span class="font-lexend font-extrabold text-[10px] uppercase mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

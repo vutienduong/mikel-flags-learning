@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flag Quest - New Country Unlocked</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f1f1ef",
+            "primary": "#006685",
+            "secondary-fixed": "#ffdf92",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdad7",
+            "outline": "#6d797f",
+            "on-secondary-fixed": "#241a00",
+            "on-surface-variant": "#3d484e",
+            "surface-variant": "#e3e2e1",
+            "surface-dim": "#dadad9",
+            "on-primary-fixed": "#001f2a",
+            "on-primary-container": "#004459",
+            "on-tertiary-container": "#820010",
+            "outline-variant": "#bdc8cf",
+            "secondary": "#755b00",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#bee9ff",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed": "#410004",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "primary-container": "#2bb6e6",
+            "background": "#faf9f8",
+            "on-tertiary-fixed-variant": "#930014",
+            "inverse-surface": "#2f3130",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#ffb3ae",
+            "on-primary-fixed-variant": "#004d65",
+            "surface-container-high": "#e9e8e7",
+            "surface-bright": "#faf9f8",
+            "secondary-container": "#fec700",
+            "error-container": "#ffdad6",
+            "tertiary": "#bb1522",
+            "surface-tint": "#006685",
+            "inverse-primary": "#6ad3ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#f4bf00",
+            "surface-container-highest": "#e3e2e1",
+            "on-background": "#1a1c1b",
+            "surface": "#faf9f8",
+            "primary-fixed-dim": "#6ad3ff",
+            "tertiary-container": "#ff857e",
+            "on-secondary-container": "#6e5400",
+            "on-secondary-fixed-variant": "#594400",
+            "surface-container": "#eeeeec",
+            "surface-container-low": "#f4f3f2",
+            "on-surface": "#1a1c1b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "16px",
+            "margin-mobile": "24px",
+            "touch-target-min": "56px",
+            "margin-desktop": "48px",
+            "base-unit": "8px"
+          },
+          "fontFamily": {
+            "body-lg": ["Lexend"],
+            "headline-xl": ["Lexend"],
+            "label-bold": ["Lexend"],
+            "headline-lg": ["Lexend"],
+            "body-md": ["Lexend"]
+          },
+          "fontSize": {
+            "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+            "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .block-shadow-primary {
+      box-shadow: 0 6px 0 0 #004459;
+    }
+    .block-shadow-secondary {
+      box-shadow: 0 6px 0 0 #594400;
+    }
+    .block-shadow-card {
+      box-shadow: 0 4px 0 0 #e3e2e1;
+    }
+    .active-press:active {
+      transform: translateY(4px);
+      box-shadow: none !important;
+    }
+    .confetti-bg {
+      background-image: radial-gradient(#2bb6e6 2px, transparent 2px), radial-gradient(#fec700 2px, transparent 2px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 flex justify-between items-center w-full px-6 py-3 fixed top-0 z-50 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(226,232,240,1)] dark:shadow-[0_4px_0_0_rgba(30,41,59,1)]">
+<div class="flex items-center gap-2">
+<span class="font-[Lexend] font-black uppercase tracking-tight text-2xl text-sky-500 dark:text-sky-400">Junior Navigator</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 dark:text-slate-600 hover:scale-105 transition-transform active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined text-3xl" data-icon="emoji_events">emoji_events</span>
+</button>
+<button class="text-slate-400 dark:text-slate-600 hover:scale-105 transition-transform active:translate-y-1 active:shadow-none">
+<span class="material-symbols-outlined text-3xl" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center pt-24 pb-12 px- gutter relative overflow-hidden confetti-bg bg-opacity-10">
+<!-- Celebration Content -->
+<div class="max-w-md w-full text-center z-10 flex flex-col items-center gap-8">
+<!-- Celebration Banner -->
+<div class="space-y-2">
+<span class="font-headline-lg text-headline-lg text-secondary-container drop-shadow-sm uppercase tracking-widest block">Level Up!</span>
+<h1 class="font-headline-xl text-headline-xl text-primary drop-shadow-md leading-none">
+          🎉 NEW COUNTRY<br/>UNLOCKED!
+        </h1>
+</div>
+<!-- Centerpiece: Thailand Flag Tile -->
+<div class="relative group">
+<!-- Playful Glow Background -->
+<div class="absolute inset-0 bg-primary-container opacity-20 blur-3xl rounded-full scale-125"></div>
+<!-- Flag Tile -->
+<div class="relative bg-white p-4 rounded-[2rem] border-4 border-primary block-shadow-card transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+<div class="w-64 h-44 rounded-xl overflow-hidden border-2 border-surface-variant flex items-center justify-center bg-slate-100">
+<img alt="Flag of Thailand" class="w-full h-full object-cover" data-alt="A vibrant, high-resolution close-up of the national flag of Thailand featuring its iconic red, white, and blue horizontal stripes. The flag appears to be made of a rich, tactile fabric with soft lighting that highlights its texture. It is presented in a bright, cheerful setting with playful, cartoony design elements that evoke a sense of adventure and discovery for children. The colors are saturated and bold, fitting an energetic educational game aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZU2K1yQ8orowa7Az6rnzp3fPxwNvg7TqTfKYU-JUxUZko7zhAu2XDDMWxg_JsT3Zr78WJyqqdT2WAevZTbaMuWdOmEkqrssF_VP4VVPhtes9FURIWJXnJMxMtNGni-YiDBCBPq4eNI_rwDsTVP8RHERsbArgqdry2aVTeNUPIfCFqipB05p8_jmT71QRcAjhs5xFhAjmqdYAJT18VHlW9BCMS6nOZkCQxU-FInGrzdRq3MX9ay2ltfKOtMOlux8TN0vPcPGtZnV0"/>
+</div>
+</div>
+<!-- Sticker Overlay -->
+<div class="absolute -bottom-6 -right-6 bg-secondary-container border-4 border-on-secondary-fixed block-shadow-secondary rounded-full px-6 py-3 transform rotate-12 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-bold text-label-bold text-on-secondary-fixed uppercase tracking-wider">COLLECTED!</span>
+</div>
+</div>
+<!-- Country Name -->
+<div class="mt-4">
+<h2 class="font-headline-xl text-headline-xl text-on-background tracking-tighter uppercase">THAILAND</h2>
+<p class="font-body-lg text-body-lg text-outline">You found the hidden pattern!</p>
+</div>
+<!-- Fact Card (Bento-style snippet) -->
+<div class="bg-surface-container-low border-2 border-surface-variant rounded-3xl p-6 w-full flex items-center gap-4 text-left">
+<div class="bg-primary-container p-3 rounded-2xl text-on-primary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<span class="font-label-bold text-label-bold text-primary uppercase">Fun Fact</span>
+<p class="font-body-md text-body-md text-on-surface">The stripes represent the nation, religion, and the monarchy!</p>
+</div>
+</div>
+<!-- Massive CTA Button -->
+<div class="w-full pt-4">
+<button class="group w-full py-6 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-headline-lg text-headline-lg rounded-full active-press block-shadow-secondary flex items-center justify-center gap-3 transition-all">
+<span>CONTINUE</span>
+<span class="material-symbols-outlined text-4xl group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Background Confetti Elements (Visuals) -->
+<div class="absolute top-20 left-10 text-primary opacity-20">
+<span class="material-symbols-outlined text-6xl" data-icon="star">star</span>
+</div>
+<div class="absolute top-1/2 -right-10 text-tertiary opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="language">language</span>
+</div>
+<div class="absolute bottom-20 left-1/4 text-secondary opacity-20">
+<span class="material-symbols-outlined text-5xl" data-icon="potted_plant">potted_plant</span>
+</div>
+<div class="absolute bottom-40 right-10 text-primary opacity-20">
+<span class="material-symbols-outlined text-7xl" data-icon="celebration">celebration</span>
+</div>
+</main>
+<!-- Map Visual Decoration (Lower Section) -->
+<footer class="mt-auto pointer-events-none opacity-50 h-32 relative overflow-hidden bg-surface-container">
+<div class="absolute inset-0 flex items-center justify-center">
+<img alt="Thailand Map Background" class="w-full object-cover grayscale opacity-30" data-alt="A stylized, illustrative map of Southeast Asia with a focus on Thailand, rendered in a soft, minimalist aesthetic with pastel colors. The map features friendly, oversized geographical markers and playful terrain details like small mountains and forests. The lighting is bright and even, consistent with a clean and educational user interface for a children's world discovery game. The background is a soft beige color, ensuring the map feels like a tactile parchment." data-location="Thailand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaafFm6KRNrP47FCRxZDW6MHHened5jtzPVsrKOLmk5Arbf3r_ZLvLOe1MUQqaPj9wE6IYyhe11EvhA_Wqntls526yf_AWfB6K4tglHEAV8R9NKA5BPx6eCi_y_iPy9mmI81S57hJOdGkY1RxvjGdor2cwuMtos-5SEYYu-J21giusPLe7-tOkGWGC9NBkYVq66sObxo1xan8NcROH60vHoubFeEg-4QeiIUI8nWvyikHNZ1IoNP1M836ChnZpXGatDV9nqbgaoHs"/>
+</div>
+</footer>
+</body></html>

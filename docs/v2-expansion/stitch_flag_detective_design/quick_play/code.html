@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bdc8cf",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary-fixed": "#410004",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001f2a",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#ff857e",
+                        "primary": "#006685",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1b",
+                        "on-primary-container": "#004459",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "surface-tint": "#006685",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1a1c1b",
+                        "error": "#ba1a1a",
+                        "tertiary": "#bb1522",
+                        "primary-container": "#2bb6e6",
+                        "background": "#faf9f8",
+                        "surface": "#faf9f8",
+                        "on-secondary": "#ffffff",
+                        "outline": "#6d797f",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "inverse-primary": "#6ad3ff",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container-highest": "#e3e2e1",
+                        "primary-fixed": "#bee9ff",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#004d65",
+                        "surface-container": "#eeeeec",
+                        "primary-fixed-dim": "#6ad3ff",
+                        "on-tertiary-fixed-variant": "#930014",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffdf92",
+                        "secondary-fixed-dim": "#f4bf00",
+                        "on-secondary-container": "#6e5400",
+                        "surface-dim": "#dadad9",
+                        "on-tertiary-container": "#820010",
+                        "surface-container-low": "#f4f3f2",
+                        "secondary-container": "#fec700",
+                        "secondary": "#755b00",
+                        "on-secondary-fixed-variant": "#594400",
+                        "on-surface-variant": "#3d484e",
+                        "inverse-on-surface": "#f1f1ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "base-unit": "8px",
+                        "touch-target-min": "56px",
+                        "margin-mobile": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Lexend"],
+                        "headline-xl": ["Lexend"],
+                        "label-bold": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "body-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+        }
+        .block-shadow-yellow {
+            box-shadow: 0 6px 0 0 #b38f00;
+        }
+        .block-shadow-white {
+            box-shadow: 0 4px 0 0 #e3e2e1;
+        }
+        .active-press:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 0 transparent;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(0,0,0,0.1)] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="text-sky-500 hover:scale-105 transition-transform active:translate-y-1">
+<span class="material-symbols-outlined text-3xl">arrow_back</span>
+</button>
+<h1 class="font-lexend font-black uppercase tracking-wider text-2xl text-sky-500 dark:text-sky-400">Quick Play</h1>
+</div>
+<div class="flex items-center bg-secondary-container px-4 py-2 rounded-full border-b-4 border-[#b38f00] active:translate-y-1 active:border-b-0 transition-all">
+<span class="material-symbols-outlined text-on-secondary-container mr-2" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-bold text-on-secondary-container text-lg">1,240</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-4xl mx-auto px-6 pt-28 pb-12">
+<div class="mb-10 text-center">
+<h2 class="font-headline-lg text-primary mb-2">Choose Your Mission!</h2>
+<p class="font-body-lg text-on-surface-variant">Pick a game and start your adventure.</p>
+</div>
+<!-- Game Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1: Spot the Flag -->
+<div class="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 block-shadow-white flex flex-col items-center text-center transition-all hover:-translate-y-1 hover:border-primary-container">
+<div class="w-full aspect-square mb-6 bg-sky-50 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<img alt="Flag Illustration" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A playful, high-contrast illustration of a bright national flag waving proudly on a flagpole, viewed through a large, chunky cartoon magnifying glass. The magnifying glass has a thick blue frame and a sparkling glass lens, emphasizing discovery. The background is a soft, sky-blue gradient with friendly, rounded white clouds, maintaining a joyful and educational aesthetic for children. The lighting is bright and even, mimicking a professional digital game interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD61dkQ4Wu-XL9J8M-3lF5dmhfS1gqRicse7Y8XuDq1yscBzchM9jqyVv48O7dlGp64MqpJk1vSxvzdGAyz6JaTXJ8LspSniaWrHd85fXwXJ1nzQCiSEk-XqIrRwlwwFM2B7-zO6_yxm-IOeKRZkHWq1pRJOM3KApzdVSWW1WEBhOGIdfQPG4EGK8HlR14NPDB_UW_Cp_N4Z5shO_0KHUnAYW_zZCuQygAAALZIM4raGu4lTf0K80UfwU4zPZix9b_SjhZuiVawu6k"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-7xl drop-shadow-lg">search</span>
+</div>
+</div>
+<h3 class="font-headline-lg text-on-surface mb-3">Spot the Flag</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Can you find the right flag among the decoys?</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-label-bold text-lg block-shadow-yellow active-press transition-all">
+                    PLAY NOW
+                </button>
+</div>
+<!-- Card 2: Match Game -->
+<div class="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 block-shadow-white flex flex-col items-center text-center transition-all hover:-translate-y-1 hover:border-primary-container">
+<div class="w-full aspect-square mb-6 bg-sky-50 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<img alt="Matching Game Illustration" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Two identical, brightly colored cartoon flag cards floating side-by-side on a vibrant yellow background. The cards have thick white borders and a subtle 3D block shadow effect. Sparkles and small yellow stars orbit the cards to indicate a successful match. The overall style is clean, tactile, and highly engaging, like a high-quality educational mobile game for children. The color palette is dominated by warm yellows and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWqhSWWLHg-dEWJ1QNa22H12LGA533cs2dXrHAOqI9XsMM9WgaZttUCYJ1IKIrBpvjATiC07n2oOcyz_nljJmEwSHA7HDrESYtRLdk4huDPvrvkYgbYt06Vc1Nz6UEdFgl5g1YVoWVVd7b6cyGAPwlR2h5QymaqY7p9kLrhcwGT8s9bnCinmHtwbUXft_HviX4D90k3DnwkM8giJJK7vethjTlvc33RgI9YiR1d9Qu0NLWum4tmLOCtj94_vEREpyiSj3qKcWW8-Y"/>
+<div class="absolute inset-0 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-secondary text-6xl drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">style</span>
+</div>
+</div>
+<h3 class="font-headline-lg text-on-surface mb-3">Match Game</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Flip the tiles and find the matching pairs!</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-label-bold text-lg block-shadow-yellow active-press transition-all">
+                    PLAY NOW
+                </button>
+</div>
+<!-- Card 3: Speed Quiz -->
+<div class="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 block-shadow-white flex flex-col items-center text-center transition-all hover:-translate-y-1 hover:border-primary-container">
+<div class="w-full aspect-square mb-6 bg-sky-50 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<img alt="Speed Quiz Illustration" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A chunky, vibrant red digital stopwatch floating next to a colorful world flag tile. The stopwatch has a friendly, rounded shape and shows a glowing progress bar. Dynamic 'speed lines' and small energy bolts give a sense of urgency and fun. The scene is set against a clean, modern white background with soft blue accents, fitting perfectly within a gamified educational interface for kids. The lighting is high-key and optimistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSF3KKp-lf58MPygwQem4QyMcLpwqIF9EUGShPbvMKI7cYbAkwoAqQOGeivnVOZe9yZKk54nMeh2yqkl2ydYdX-olK1K17ehYOxovToa-tw2xlR33xHQkNamINmnOWu0hsGNLYrC314EZzcJqrzkW64JeIRVeRKl8P8Vg41SVkzUqCBzMmbslYPluXCQPabd4twxg18BZWUD9zN5DsDo8DWRSW26y115L2FIvyWQPbuzXbxqNdcc0t66PL4bO7Z4gDl48-w96fCW8"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-7xl drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">timer</span>
+</div>
+</div>
+<h3 class="font-headline-lg text-on-surface mb-3">Speed Quiz</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">How many countries can you name in 60 seconds?</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-4 rounded-2xl font-label-bold text-lg block-shadow-yellow active-press transition-all">
+                    PLAY NOW
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-[0_-4px_0_0_rgba(0,0,0,0.05)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-300 rounded-2xl px-4 py-2 border-b-4 border-sky-300 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-lexend font-bold text-xs">Home</span>
+</a>
+<!-- Map -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-lexend font-bold text-xs">Map</span>
+</a>
+<!-- Awards -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-lexend font-bold text-xs">Awards</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-lexend font-bold text-xs">Settings</span>
+</a>
+</nav>
+</body></html>

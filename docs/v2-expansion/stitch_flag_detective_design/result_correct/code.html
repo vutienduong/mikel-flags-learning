@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#f4bf00",
+                    "primary-fixed-dim": "#6ad3ff",
+                    "outline": "#6d797f",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container-low": "#f4f3f2",
+                    "on-error-container": "#93000a",
+                    "secondary": "#755b00",
+                    "surface": "#faf9f8",
+                    "surface-dim": "#dadad9",
+                    "on-secondary-container": "#6e5400",
+                    "on-tertiary-container": "#820010",
+                    "on-surface-variant": "#3d484e",
+                    "primary-fixed": "#bee9ff",
+                    "on-primary-fixed-variant": "#004d65",
+                    "primary-container": "#2bb6e6",
+                    "on-primary-fixed": "#001f2a",
+                    "inverse-on-surface": "#f1f1ef",
+                    "tertiary": "#bb1522",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#410004",
+                    "surface-tint": "#006685",
+                    "surface-container-highest": "#e3e2e1",
+                    "outline-variant": "#bdc8cf",
+                    "on-secondary-fixed-variant": "#594400",
+                    "surface-container": "#eeeeec",
+                    "tertiary-container": "#ff857e",
+                    "secondary-fixed": "#ffdf92",
+                    "inverse-surface": "#2f3130",
+                    "background": "#faf9f8",
+                    "on-surface": "#1a1c1b",
+                    "primary": "#006685",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#faf9f8",
+                    "surface-variant": "#e3e2e1",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "on-background": "#1a1c1b",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-high": "#e9e8e7",
+                    "inverse-primary": "#6ad3ff",
+                    "secondary-container": "#fec700",
+                    "on-primary-container": "#004459",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#930014"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base-unit": "8px",
+                    "margin-desktop": "48px",
+                    "margin-mobile": "24px",
+                    "touch-target-min": "56px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Lexend"],
+                    "headline-xl": ["Lexend"],
+                    "body-lg": ["Lexend"],
+                    "label-bold": ["Lexend"],
+                    "body-md": ["Lexend"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        }
+        .confetti-pattern {
+            background-color: #faf9f8;
+            background-image: radial-gradient(#2bb6e6 1px, transparent 1px), radial-gradient(#fec700 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 border-b-4 border-slate-200 dark:border-slate-800 shadow-[0_4px_0_0_rgba(226,232,240,1)] dark:shadow-[0_4px_0_0_rgba(30,41,59,1)] flex justify-between items-center px-6 h-20 w-full sticky top-0 z-50">
+<div class="text-2xl font-black text-sky-600 dark:text-sky-400 tracking-tighter">Junior Navigator</div>
+<div class="flex gap-4">
+<button class="hover:scale-105 transition-transform duration-200 text-slate-400 dark:text-slate-600 active:translate-y-1">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+</button>
+<button class="hover:scale-105 transition-transform duration-200 text-slate-400 dark:text-slate-600 active:translate-y-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center p-6 confetti-pattern relative overflow-hidden">
+<!-- Result Header -->
+<div class="text-center mb-8">
+<h1 class="font-headline-xl text-headline-xl text-primary-container drop-shadow-sm">🎉 Correct!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">You found the right flag!</p>
+</div>
+<!-- Victory Stars Arc -->
+<div class="flex items-end justify-center gap-4 mb-10 h-32">
+<div class="transform -rotate-12 translate-y-4">
+<span class="material-symbols-outlined filled-icon text-secondary-container text-7xl drop-shadow-[0_6px_0_rgba(117,91,0,1)]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="transform scale-125 -translate-y-4">
+<span class="material-symbols-outlined filled-icon text-secondary-container text-8xl drop-shadow-[0_8px_0_rgba(117,91,0,1)]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="transform rotate-12 translate-y-4">
+<span class="material-symbols-outlined filled-icon text-secondary-container text-7xl drop-shadow-[0_6px_0_rgba(117,91,0,1)]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- XP Badge & Progress -->
+<div class="w-full max-w-sm bg-white border-b-4 border-slate-200 rounded-3xl p-6 mb-12 shadow-sm">
+<div class="flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary-container filled-icon text-3xl" data-icon="emoji_events" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<span class="font-headline-lg text-headline-lg text-secondary">+10 XP</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-full overflow-hidden border-2 border-surface-container-highest">
+<div class="h-full w-3/4 bg-primary-container rounded-full relative">
+<div class="absolute inset-0 bg-white/20 h-1/2"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2 px-1">
+<span class="font-label-bold text-label-bold text-outline">LEVEL 4</span>
+<span class="font-label-bold text-label-bold text-outline">750/1000</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-sm flex flex-col gap-4">
+<button class="h-[72px] w-full bg-primary-container text-on-primary font-headline-lg rounded-2xl border-b-[6px] border-primary active:border-b-0 active:translate-y-[6px] transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                ▶ Next Country
+            </button>
+<button class="h-[56px] w-full bg-white text-on-surface-variant font-label-bold rounded-2xl border-b-[4px] border-slate-200 active:border-b-0 active:translate-y-[4px] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="refresh">refresh</span>
+                ↺ Replay
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-slate-900 border-t-4 border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-[0_-4px_0_0_rgba(226,232,240,1)] dark:shadow-[0_-4px_0_0_rgba(30,41,59,1)]">
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-lexend font-bold text-[12px]">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-2xl px-4 py-2 border-b-4 border-sky-400 dark:border-sky-600">
+<span class="material-symbols-outlined filled-icon" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-lexend font-bold text-[12px]">Quests</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-lexend font-bold text-[12px]">Awards</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-symbols-outlined" data-icon="backpack">backpack</span>
+<span class="font-lexend font-bold text-[12px]">Backpack</span>
+</div>
+</nav>
+<!-- Spacing for fixed BottomNavBar -->
+<div class="h-24"></div>
+</body></html>

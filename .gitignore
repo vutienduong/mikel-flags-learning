@@ -1,5 +1,6 @@
 node_modules/
 .expo/
+web-app/.next/
 dist/
 *.jks
 *.p8
