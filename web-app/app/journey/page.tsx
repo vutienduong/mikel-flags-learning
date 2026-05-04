@@ -7,23 +7,49 @@ import { useGameProgressStore } from "../../lib/store";
 
 export default function JourneyMapPage() {
   const progress = useGameProgressStore((s) => s.progress);
+  const shuffleRemainingJourney = useGameProgressStore((s) => s.shuffleRemainingJourney);
   const journey = journeys[0];
   const journeyProgress = progress.journeyProgressById[journey.id];
-  const countries = getJourneyCountries(journey);
+  const countries = getJourneyCountries(journey, journeyProgress);
   const completion = getJourneyCompletion(journey, journeyProgress);
   const currentIndex = getCurrentCountryIndex(journey, journeyProgress);
+  const remainingCount = Math.max(0, completion.total - completion.completed - 1);
 
   return (
     <div className="page">
-      <div style={{ textAlign: "center", marginBottom: 18 }}>
-        <p className="kicker">Journey Map</p>
-        <h1 className="section-title">{journey.title}</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: 18,
+          alignItems: "flex-end",
+          flexWrap: "wrap",
+          marginBottom: 18,
+        }}
+      >
+        <div>
+          <p className="kicker">Journey Map</p>
+          <h1 className="section-title">{journey.title}</h1>
+        </div>
+        <button
+          type="button"
+          className="secondary-button"
+          onClick={() => shuffleRemainingJourney(journey.id)}
+          disabled={remainingCount < 2}
+          style={{
+            minHeight: 54,
+            opacity: remainingCount < 2 ? 0.55 : 1,
+            cursor: remainingCount < 2 ? "not-allowed" : "pointer",
+          }}
+        >
+          Shuffle Remaining
+        </button>
       </div>
 
       <div className="map-path">
         {countries.map((country, index) => {
           const isComplete = journeyProgress?.completedCountryCodes.includes(country.code);
-          const isUnlocked = progress.unlockedCountryCodes.includes(country.code) || index <= currentIndex;
+          const isUnlocked = Boolean(isComplete) || index <= currentIndex;
           const isCurrent = isUnlocked && currentIndex === index && !isComplete;
           const nodeClass = isComplete
             ? "is-complete"

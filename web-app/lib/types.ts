@@ -31,6 +31,7 @@ export type JourneyProgress = {
   journeyId: string;
   status: "locked" | "available" | "in_progress" | "completed";
   currentIndex: number;
+  countryCodes: string[];
   completedCountryCodes: string[];
   totalStars: number;
   bestStarsByCountry: Record<string, number>;
@@ -52,7 +53,7 @@ export type GameSession = {
 };
 
 export type UserGameProgress = {
-  schemaVersion: 2;
+  schemaVersion: 3;
   xp: number;
   level: number;
   streak: {

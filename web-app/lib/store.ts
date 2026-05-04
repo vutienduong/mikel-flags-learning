@@ -3,7 +3,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { journeys, southeastAsiaMilestone } from "../data/journeys";
-import { getInitialJourneyProgress, getJourney, getNextCountryCode } from "./journey";
+import {
+  createJourneyCountryOrder,
+  getCurrentCountryIndex,
+  getInitialJourneyProgress,
+  getJourney,
+  getNextCountryCode,
+  shuffleRemainingCountryCodes,
+} from "./journey";
 import type { GameSession, JourneyProgress, RewardBundle, UserGameProgress } from "./types";
 
 type LegacyProgress = {
@@ -24,6 +31,7 @@ type GameProgressState = {
     stars: 0 | 1 | 2 | 3,
     session?: Partial<GameSession>
   ) => void;
+  shuffleRemainingJourney: (journeyId: string) => void;
   grantReward: (reward: RewardBundle) => void;
   resetProgress: () => void;
 };
@@ -53,7 +61,7 @@ function makeInitialProgress(legacy?: LegacyProgress): UserGameProgress {
   const learnedCountryCodes = unique(legacy?.learnedCodes ?? []);
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     xp: 0,
     level: 1,
     streak: {
@@ -73,6 +81,52 @@ function makeInitialProgress(legacy?: LegacyProgress): UserGameProgress {
       quizHighScore: legacy?.quizHighScore ?? 0,
       quizTotalPlayed: legacy?.quizTotalPlayed ?? 0,
     },
+  };
+}
+
+function normalizeJourneyProgress(journeyProgress: JourneyProgress, journey = getJourney(journeyProgress.journeyId)) {
+  if (!journey) return journeyProgress;
+  if (
+    journeyProgress.countryCodes?.length === journey.countryCodes.length &&
+    journey.countryCodes.every((code) => journeyProgress.countryCodes.includes(code))
+  ) {
+    return journeyProgress;
+  }
+
+  const countryCodes = createJourneyCountryOrder(journey, journeyProgress);
+  return {
+    ...journeyProgress,
+    countryCodes,
+    currentIndex: getCurrentCountryIndex(journey, {
+      ...journeyProgress,
+      countryCodes,
+    }),
+  };
+}
+
+function normalizeProgress(progress: UserGameProgress) {
+  const journeyProgressById = { ...progress.journeyProgressById };
+  for (const journey of journeys) {
+    journeyProgressById[journey.id] = normalizeJourneyProgress(
+      journeyProgressById[journey.id] ?? getInitialJourneyProgress(journey),
+      journey
+    );
+  }
+
+  const primaryProgress = journeyProgressById[primaryJourney.id];
+  const currentPrimaryCode = primaryProgress
+    ? primaryProgress.countryCodes[getCurrentCountryIndex(primaryJourney, primaryProgress)]
+    : primaryJourney.countryCodes[0];
+
+  return {
+    ...progress,
+    schemaVersion: 3,
+    journeyProgressById,
+    unlockedJourneyIds: unique([...progress.unlockedJourneyIds, primaryJourney.id]),
+    unlockedCountryCodes: unique([
+      ...progress.unlockedCountryCodes,
+      ...(currentPrimaryCode ? [currentPrimaryCode] : []),
+    ]),
   };
 }
 
@@ -164,7 +218,7 @@ export const useGameProgressStore = create<GameProgressState>()(
           if (!badges.includes("first-quest")) badges.push("first-quest");
           const isSoutheastAsiaMilestone =
             journeyId === primaryJourney.id &&
-            countryCode === southeastAsiaMilestone.finalCountryCode &&
+            southeastAsiaMilestone.countryCodes.includes(countryCode) &&
             southeastAsiaMilestone.countryCodes.every((code) =>
               [...progress.learnedCountryCodes, countryCode].includes(code)
             );
@@ -221,7 +275,7 @@ export const useGameProgressStore = create<GameProgressState>()(
           const previous = progress.journeyProgressById[journeyId];
           const previousStars = previous.bestStarsByCountry[countryCode] ?? 0;
           const nextStars = Math.max(previousStars, stars);
-          const nextCountryCode = getNextCountryCode(journey, countryCode);
+          const nextCountryCode = getNextCountryCode(journey, countryCode, previous);
           const completedCountryCodes = unique([
             ...previous.completedCountryCodes,
             countryCode,
@@ -253,10 +307,10 @@ export const useGameProgressStore = create<GameProgressState>()(
                 [journeyId]: {
                   ...previous,
                   status: isJourneyComplete ? "completed" : "in_progress",
-                  currentIndex: Math.max(
-                    previous.currentIndex,
-                    Math.min(journey.countryCodes.indexOf(countryCode) + 1, journey.countryCodes.length - 1)
-                  ),
+                  currentIndex: getCurrentCountryIndex(journey, {
+                    ...previous,
+                    completedCountryCodes,
+                  }),
                   completedCountryCodes,
                   totalStars: previous.totalStars - previousStars + nextStars,
                   bestStarsByCountry: {
@@ -265,6 +319,38 @@ export const useGameProgressStore = create<GameProgressState>()(
                   },
                   completedAt: isJourneyComplete ? new Date().toISOString() : previous.completedAt,
                 },
+              },
+            },
+          };
+        }),
+      shuffleRemainingJourney: (journeyId) =>
+        set((state) => {
+          let progress = ensureJourney(state.progress, journeyId);
+          const journey = getJourney(journeyId);
+          if (!journey) return { progress };
+
+          const previous = normalizeJourneyProgress(progress.journeyProgressById[journeyId], journey);
+          const countryCodes = shuffleRemainingCountryCodes(journey, previous);
+          const nextProgress = {
+            ...previous,
+            countryCodes,
+            currentIndex: getCurrentCountryIndex(journey, {
+              ...previous,
+              countryCodes,
+            }),
+          };
+          const currentCode = countryCodes[nextProgress.currentIndex];
+
+          return {
+            progress: {
+              ...progress,
+              unlockedCountryCodes: unique([
+                ...progress.unlockedCountryCodes,
+                ...(currentCode ? [currentCode] : []),
+              ]),
+              journeyProgressById: {
+                ...progress.journeyProgressById,
+                [journeyId]: nextProgress,
               },
             },
           };
@@ -286,10 +372,12 @@ export const useGameProgressStore = create<GameProgressState>()(
     {
       name: "flags-progress",
       storage: createJSONStorage(() => localStorage),
-      version: 2,
+      version: 3,
       migrate: (persisted: unknown) => {
         const state = persisted as Partial<GameProgressState> & LegacyProgress;
-        if (state?.progress?.schemaVersion === 2) return state;
+        if (state?.progress) {
+          return { ...state, progress: normalizeProgress(state.progress) };
+        }
         return { progress: makeInitialProgress(state) };
       },
     }

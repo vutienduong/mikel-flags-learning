@@ -89,6 +89,7 @@ export default function SpotOddFlagPage() {
   const params = useParams<{ journeyId: string; countryCode: string }>();
   const country = getCountry(params.countryCode);
   const journey = getJourney(params.journeyId);
+  const progress = useGameProgressStore((s) => s.progress);
   const startSession = useGameProgressStore((s) => s.startSession);
   const finishSession = useGameProgressStore((s) => s.finishSession);
   const [phase, setPhase] = useState<Phase>("playing");
@@ -96,10 +97,12 @@ export default function SpotOddFlagPage() {
   const [mistakes, setMistakes] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(10);
   const [feedback, setFeedback] = useState<FeedbackKind>(null);
+  const [regionMilestoneReady, setRegionMilestoneReady] = useState(false);
   const [session, setSession] = useState<GameSession | null>(null);
   const startTime = useRef(Date.now());
   const oddIndex = useMemo(() => Math.floor(Math.random() * 9), [params.countryCode]);
-  const nextCountryCode = journey && country ? getNextCountryCode(journey, country.code) : null;
+  const journeyProgress = journey ? progress.journeyProgressById[journey.id] : undefined;
+  const nextCountryCode = journey && country ? getNextCountryCode(journey, country.code, journeyProgress) : null;
   const nextCountry = nextCountryCode ? getCountry(nextCountryCode) : null;
 
   useEffect(() => {
@@ -158,6 +161,13 @@ export default function SpotOddFlagPage() {
 
     const elapsedMs = Date.now() - startTime.current;
     const stars = calculateOddFlagStars(nextMistakes, elapsedMs);
+    const learnedAfterWin = [...progress.learnedCountryCodes, activeCountry.code];
+    setRegionMilestoneReady(
+      params.journeyId !== "quick" &&
+        southeastAsiaMilestone.countryCodes.includes(activeCountry.code) &&
+        southeastAsiaMilestone.reward.badges.some((badge) => !progress.badges.includes(badge)) &&
+        southeastAsiaMilestone.countryCodes.every((code) => learnedAfterWin.includes(code))
+    );
     const finishedSession: GameSession = {
       ...(session ?? startSession(activeCountry.code, params.journeyId)),
       endedAt: new Date().toISOString(),
@@ -181,8 +191,7 @@ export default function SpotOddFlagPage() {
   const rule = getOddFlagRule(activeCountry);
   const shouldShowRegionMilestone =
     didWin &&
-    params.journeyId !== "quick" &&
-    activeCountry.code === southeastAsiaMilestone.finalCountryCode &&
+    regionMilestoneReady &&
     Boolean(nextCountryCode);
 
   return (

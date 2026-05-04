@@ -26,7 +26,8 @@ export default function CountryIntroPage() {
   }
 
   const currentCode = getCurrentCountryCode(journey, progress.journeyProgressById[journey.id]);
-  const isUnlocked = progress.unlockedCountryCodes.includes(country.code) || country.code === currentCode;
+  const isComplete = progress.journeyProgressById[journey.id]?.completedCountryCodes.includes(country.code);
+  const isUnlocked = Boolean(isComplete) || country.code === currentCode;
 
   return (
     <div className="page narrow-page">
